@@ -2,19 +2,19 @@
 import { changeModal, showModal, closeModal } from './modules/changeModal.js';
 
 document.getElementById('opening-icon-save').addEventListener('click', (event) => {
-  event.stopPropagation(); 
-  // 後で書く
+  event.stopPropagation();
+  showModal('savegame');
 });
 document.getElementById('opening-icon-load').addEventListener('click', (event) => {
-  event.stopPropagation(); 
+  event.stopPropagation();
   showModal('loadgame');
 });
 document.getElementById('opening-icon-setting').addEventListener('click', (event) => {
-  event.stopPropagation(); 
+  event.stopPropagation();
   showModal('setting');
 });
 document.getElementById('opening-icon-menu').addEventListener('click', (event) => {
-  event.stopPropagation(); 
+  event.stopPropagation();
   showModal('menu');
 });
 document.querySelector('.menu-close-button-container').addEventListener('click', () => {
@@ -22,7 +22,8 @@ document.querySelector('.menu-close-button-container').addEventListener('click',
 });
 
 document.getElementById('menu-item-save-data').addEventListener('click', () => {
-  // あとで書く
+  closeModal('menu');
+  showModal('savegame');
 });
 document.getElementById('menu-item-load-data').addEventListener('click', () => {
   closeModal('menu');

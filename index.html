@@ -8,10 +8,12 @@
   <link rel="stylesheet" href="./src/css/top.css">
   <link rel="stylesheet" href="./src/css/opening.css">
   <link rel="stylesheet" href="./src/css/story_icons.css">
+  <link rel="stylesheet" href="./src/css/savegame.css">
   <link rel="stylesheet" href="./src/css/loadgame.css">
   <link rel="stylesheet" href="./src/css/gallary.css">
   <link rel="stylesheet" href="./src/css/setting.css">
   <link rel="stylesheet" href="./src/css/day.css">
+  <link rel="stylesheet" href="./src/css/message.css">
   <title>星色パレット</title>
 </head>
 <body>
@@ -36,7 +38,7 @@
       <button id="top-button-start" class="top-button">New Game</button>
       <button id="top-button-continue" class="top-button">Load Game</button>
       <button id="top-button-gallary" class="top-button">Collection</button>
-      <button id="top-button-setting" class="top-button">Setting</button>
+      <button id="top-button-setting" class="top-button">Settings</button>
     </div>
   </div>
 
@@ -87,8 +89,93 @@
     <div class="menu-container">
       <div class="menu-item" id="menu-item-save-data">Save Data</div>
       <div class="menu-item" id="menu-item-load-data">Load Data</div>
-      <div class="menu-item" id="menu-item-setting">Setting</div>
+      <div class="menu-item" id="menu-item-setting">Settings</div>
       <div class="menu-item" id="menu-item-return-title">Return to Title</div>
+    </div>
+  </div>
+
+  <div id="modal-savegame" class="modal">
+    <div class="savegame-image-container">
+      <img src="./src/assets/images/theme/background.png" class="savegame-image">
+    </div>
+    <div class="savegame-title-container">
+      <div class="savegame-title">
+        <p>Save</p>
+      </div>
+    </div>
+    <div class="savegame-close-button-container">
+      <div class="savegame-close-button-image">
+        <img src="./src/assets/images/logo.svg">
+      </div>
+      <div class="savegame-close-text-container">
+        <div class="savegame-close-text-label">Close</div>
+      </div>
+    </div>
+    <div class="savegame-container">
+      <div class="savegame-item selected">
+        <div class="savegame-item-image-container">
+          <img src="./src/assets/images/top.png" class="savegame-item-image">
+        </div>
+        <div class="savegame-item-text-container">
+          <div class="savegame-item-text-top">
+            <p>DAY 01</p>
+            <p class="savegame-item-text-top-date">2025/10/18 10:00</p>
+          </div>
+          <div class="savegame-item-text-bottom">
+            <p>Description</p>
+          </div>
+        </div>
+      </div>
+      <div class="savegame-item">
+        <div class="savegame-item-image-container">
+          <img src="./src/assets/images/top.png" class="savegame-item-image">
+        </div>
+        <div class="savegame-item-text-container">
+          <div class="savegame-item-text-top">
+            <p>DAY 01</p>
+            <p class="savegame-item-text-top-date">2025/10/18 10:00</p>
+          </div>
+          <div class="savegame-item-text-bottom">
+            <p>Description</p>
+          </div>
+        </div>
+      </div>
+      <div class="savegame-item">
+        <div class="savegame-item-image-container">
+        </div>
+        <div class="savegame-item-text-container">
+          <div class="savegame-item-text-top">
+            <p>No Data</p>
+          </div>
+          <div class="savegame-item-text-bottom">
+            <p>保存データがありません</p>
+          </div>
+        </div>
+      </div>
+      <div class="savegame-item">
+        <div class="savegame-item-image-container">
+        </div>
+        <div class="savegame-item-text-container">
+          <div class="savegame-item-text-top">
+            <p>No Data</p>
+          </div>
+          <div class="savegame-item-text-bottom">
+            <p>保存データがありません</p>
+          </div>
+        </div>
+      </div>
+      <div class="savegame-item">
+        <div class="savegame-item-image-container">
+        </div>
+        <div class="savegame-item-text-container">
+          <div class="savegame-item-text-top">
+            <p>No Data</p>
+          </div>
+          <div class="savegame-item-text-bottom">
+            <p>保存データがありません</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -206,7 +293,7 @@
     </div>
     <div class="setting-title-container">
       <div class="setting-title">
-        <p>Setting</p>
+        <p>Settings</p>
       </div>
     </div>
     <div class="setting-close-button-container">
@@ -337,6 +424,7 @@
   <script src="./src/ts/logo.js" type="module"></script>
   <script src="./src/ts/opening.js" type="module"></script>
   <script src="./src/ts/story_icons.js" type="module"></script>
+  <script src="./src/ts/savegame.ts" type="module"></script>
   <script src="./src/ts/loadGame.js" type="module"></script>
   <script src="./src/ts/gallary.js" type="module"></script>
   <script src="./src/ts/main.ts" type="module"></script>

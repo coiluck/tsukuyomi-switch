@@ -1,0 +1,65 @@
+.confirm-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 50%;
+  height: fit-content;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(183, 115, 220, 0.3), 0 0 20px 0 rgba(241, 115, 136, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+.confirm-window.active {
+  animation: breathe 0.3s ease;
+}
+@keyframes breathe {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.03);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+.confirm-window-content {
+  font-size: .9rem;
+  font-family: serif;
+  color: #333;
+  text-align: center;
+}
+.confirm-window-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  width: 100%;
+}
+.confirm-window-button-cancel {
+  flex: 1;
+  max-width: 120px;
+  background-color: #f79cac;
+  color: #fff;
+  font-family: serif;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 15px;
+}
+.confirm-window-button-ok {
+  flex: 1;
+  max-width: 120px;
+  background-color: #b773dc;
+  color: #fff;
+  font-family: serif;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 15px;
+}

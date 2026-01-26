@@ -112,7 +112,7 @@ export async function loadGameExcerpt(slotId: number): Promise<any> {
       LoadImageSrc: savedData.LoadImageSrc,
     };
   } else {
-    console.error(`Slot ${slotId} is empty.`);
+    console.log(`Slot ${slotId} is empty.`);
     return null;
   }
 }
