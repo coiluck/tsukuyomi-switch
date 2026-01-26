@@ -6,8 +6,8 @@ export async function nextDay(nextDay, backgroundImage, clickTextColor = 'white'
   // セットアップ処理
   document.querySelector('#modal-day .day-click-text').textContent = "";
   document.querySelector('#modal-day .day-click-text').classList.remove('fade-in');
-  document.querySelector('#modal-day .day-background-image img').src = `./assets/images/background/${backgroundImage}`;
-  const maxDay = 31;
+  document.querySelector('#modal-day .day-background-image img').src = `/src/assets/images/background/${backgroundImage}`;
+  const maxDay = 3;
   if (nextDay - 2 > 0) {
     document.querySelector('#modal-day #day-text-previous').textContent = `Day${nextDay - 2}`;
     document.querySelector('#modal-day #day-text-previous').style.visibility = 'visible';
@@ -95,7 +95,7 @@ export function changeBackgroundImage(object, imagePath) {
   return new Promise((resolve) => {
     const modal = document.getElementById(`modal-${object}`);
     const backgroundImage = modal.querySelector(`#${object}-background-image-container .background-image`);
-    const newImageSrc = `./assets/images/background/${imagePath}`;
+    const newImageSrc = `./src/assets/images/background/${imagePath}`;
 
     // フェードアウト
     modal.classList.remove("fade-in");

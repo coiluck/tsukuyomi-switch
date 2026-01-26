@@ -7,16 +7,21 @@ const initialState = {
   },
   gameData: {
     root: null,
-    point: {
-      aria: 0,
-      kana: 0,
-      shiori: 0,
-    }
+    girlPoint: 0,
   },
-  LoadImageSrc: './assets/images/background/nightsky.png',
+  LoadImageSrc: './src/assets/images/background/nightsky.png',
 };
 
+const initialSetting = {
+  bgmVolume: 2,
+  seVolume: 5,
+  voiceVolume: 5,
+  textSpeed: 3,
+  screenSize: 'window',
+}
+
 export const globalGameState = structuredClone(initialState); // 初期化
+export const globalSetting = structuredClone(initialSetting); // 初期化
 
 export function resetGlobalState() {
   const freshState = structuredClone(initialState);

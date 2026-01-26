@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/default.css">
-  <link rel="stylesheet" href="./css/logo.css">
-  <link rel="stylesheet" href="./css/top.css">
-  <link rel="stylesheet" href="./css/opening.css">
-  <link rel="stylesheet" href="./css/story_icons.css">
-  <link rel="stylesheet" href="./css/loadgame.css">
-  <link rel="stylesheet" href="./css/gallary.css">
-  <link rel="stylesheet" href="./css/setting.css">
-  <link rel="stylesheet" href="./css/day.css">
+  <link rel="stylesheet" href="./src/css/default.css">
+  <link rel="stylesheet" href="./src/css/logo.css">
+  <link rel="stylesheet" href="./src/css/top.css">
+  <link rel="stylesheet" href="./src/css/opening.css">
+  <link rel="stylesheet" href="./src/css/story_icons.css">
+  <link rel="stylesheet" href="./src/css/loadgame.css">
+  <link rel="stylesheet" href="./src/css/gallary.css">
+  <link rel="stylesheet" href="./src/css/setting.css">
+  <link rel="stylesheet" href="./src/css/day.css">
   <title>星色パレット</title>
 </head>
 <body>
   <div id="modal-logo" class="modal">
     <div class="logo-container">
       <div class="logo-image-container">
-        <img src="./assets/images/logo.svg" class="logo-image">
+        <img src="./src/assets/images/logo.svg" class="logo-image">
       </div>
       <div class="logo-text-container">
         <p id="logo-text-top"></p>
@@ -29,20 +29,20 @@
 
   <div id="modal-top" class="modal">
     <div class="top-image-container">
-      <img src="./assets/images/top.png" class="top-image">
+      <img src="./src/assets/images/top.png" class="top-image">
     </div>
     <!-- あとでタイトルを入れる -->
     <div class="top-button-container">
       <button id="top-button-start" class="top-button">New Game</button>
       <button id="top-button-continue" class="top-button">Load Game</button>
-      <button id="top-button-gallary" class="top-button">Gallary</button>
+      <button id="top-button-gallary" class="top-button">Collection</button>
       <button id="top-button-setting" class="top-button">Setting</button>
     </div>
   </div>
 
   <div id="modal-opening" class="modal">
     <div id="opening-background-image-container" class="background-image-container">
-      <img src="./assets/images/background/nightsky.png" class="background-image">
+      <img src="./src/assets/images/background/nightsky.png" class="background-image">
     </div>
     <div id="opening-choices-container" class="choices-container"></div>
     <div class="text-container">
@@ -50,26 +50,26 @@
       <p id="opening-text" class="text-message">このメッセージは表示されないはずです</p>
     </div>
     <div class="text-character-container">
-      <img src="./assets/images/kokone.png" class="text-character">
+      <img src="./src/assets/images/kokone.png" class="text-character">
     </div>
     <div id="opening-icon-container" class="icon-container">
       <div class="icon-item">
-        <img src="./assets/images/icon/prev_text.svg" class="icon-image" id="opening-icon-prev-text">
+        <img src="./src/assets/images/icon/prev_text.svg" class="icon-image" id="opening-icon-prev-text">
       </div>
       <div class="icon-item">
-        <img src="./assets/images/icon/next_text.svg" class="icon-image">
+        <img src="./src/assets/images/icon/next_text.svg" class="icon-image">
       </div>
       <div class="icon-item">
-        <img src="./assets/images/icon/save.svg" class="icon-image" id="opening-icon-save">
+        <img src="./src/assets/images/icon/save.svg" class="icon-image" id="opening-icon-save">
       </div>
       <div class="icon-item">
-        <img src="./assets/images/icon/load.svg" class="icon-image" id="opening-icon-load">
+        <img src="./src/assets/images/icon/load.svg" class="icon-image" id="opening-icon-load">
       </div>
       <div class="icon-item">
-        <img src="./assets/images/icon/setting.svg" class="icon-image" id="opening-icon-setting">
+        <img src="./src/assets/images/icon/setting.svg" class="icon-image" id="opening-icon-setting">
       </div>
       <div class="icon-item">
-        <img src="./assets/images/icon/menu-burger.svg" class="icon-image" id="opening-icon-menu">
+        <img src="./src/assets/images/icon/menu-burger.svg" class="icon-image" id="opening-icon-menu">
       </div>
     </div>
   </div>
@@ -78,7 +78,7 @@
     <div class="menu-background-layer"></div>
     <div class="menu-close-button-container">
       <div class="menu-close-button-image">
-        <img src="./assets/images/logo.svg">
+        <img src="./src/assets/images/logo.svg">
       </div>
       <div class="menu-close-text-container">
         <div class="menu-close-text-label">Close</div>
@@ -94,7 +94,7 @@
 
   <div id="modal-loadgame" class="modal">
     <div class="loadgame-image-container">
-      <img src="./assets/images/theme/background.png" class="loadgame-image">
+      <img src="./src/assets/images/theme/background.png" class="loadgame-image">
     </div>
     <div class="loadgame-title-container">
       <div class="loadgame-title">
@@ -103,7 +103,7 @@
     </div>
     <div class="loadgame-close-button-container">
       <div class="loadgame-close-button-image">
-        <img src="./assets/images/logo.svg">
+        <img src="./src/assets/images/logo.svg">
       </div>
         <div class="loadgame-close-text-container">
         <div class="loadgame-close-text-label">Close</div>
@@ -112,7 +112,7 @@
     <div class="loadgame-container">
       <div class="loadgame-item selected">
         <div class="loadgame-item-image-container">
-          <img src="./assets/images/top.png" class="loadgame-item-image">
+          <img src="./src/assets/images/top.png" class="loadgame-item-image">
         </div>
         <div class="loadgame-item-text-container">
           <div class="loadgame-item-text-top">
@@ -126,7 +126,7 @@
       </div>
       <div class="loadgame-item">
         <div class="loadgame-item-image-container">
-          <img src="./assets/images/top.png" class="loadgame-item-image">
+          <img src="./src/assets/images/top.png" class="loadgame-item-image">
         </div>
         <div class="loadgame-item-text-container">
           <div class="loadgame-item-text-top">
@@ -179,16 +179,16 @@
 
   <div id="modal-gallary" class="modal">
     <div class="gallary-image-container">
-      <img src="./assets/images/theme/background.png" class="gallary-image">
+      <img src="./src/assets/images/theme/background.png" class="gallary-image">
     </div>
     <div class="gallary-title-container">
       <div class="gallary-title">
-        <p>Gallary</p>
+        <p>Collection</p>
       </div>
     </div>
     <div class="gallary-close-button-container">
       <div class="gallary-close-button-image">
-        <img src="./assets/images/logo.svg">
+        <img src="./src/assets/images/logo.svg">
       </div>
       <div class="gallary-close-text-container">
         <div class="gallary-close-text-label">Close</div>
@@ -202,7 +202,7 @@
 
   <div id="modal-setting" class="modal">
     <div class="setting-image-container">
-      <img src="./assets/images/theme/background.png" class="setting-image">
+      <img src="./src/assets/images/theme/background.png" class="setting-image">
     </div>
     <div class="setting-title-container">
       <div class="setting-title">
@@ -211,7 +211,7 @@
     </div>
     <div class="setting-close-button-container">
       <div class="setting-close-button-image">
-        <img src="./assets/images/logo.svg">
+        <img src="./src/assets/images/logo.svg">
       </div>
       <div class="setting-close-text-container">
         <div class="setting-close-text-label">Close</div>
@@ -314,17 +314,17 @@
 
   <div id="modal-day" class="modal">
     <div class="day-background-image">
-      <img src="./assets/images/background/room_nighttime.jpg">
+      <img src="./src/assets/images/background/room_nighttime.jpg">
     </div>
     <div class="day-container">
       <div class="day-item">
-        <p class="day-text" id="day-text-previous">Day11</p>
+        <p class="day-text" id="day-text-previous">Day1</p>
       </div>
       <div class="day-item">
-        <p class="day-text" id="day-text-current">Day12</p>
+        <p class="day-text" id="day-text-current">Day2</p>
       </div>
       <div class="day-item">
-        <p class="day-text" id="day-text-nextCurrent">Day13</p>
+        <p class="day-text" id="day-text-nextCurrent">Ending</p>
       </div>
       <div class="day-item">
         <p class="day-text" id="day-text-nextNext">Day14</p>
@@ -333,12 +333,12 @@
     <p class="day-click-text">- Click to Continue -</p>
   </div>
 
-  <script src="./js/top.js" type="module"></script>
-  <script src="./js/logo.js" type="module"></script>
-  <script src="./js/opening.js" type="module"></script>
-  <script src="./js/story_icons.js" type="module"></script>
-  <script src="./js/loadGame.js" type="module"></script>
-  <script src="./js/gallary.js" type="module"></script>
-  <script src="./js/setting.js" type="module"></script>
+  <script src="./src/ts/top.js" type="module"></script>
+  <script src="./src/ts/logo.js" type="module"></script>
+  <script src="./src/ts/opening.js" type="module"></script>
+  <script src="./src/ts/story_icons.js" type="module"></script>
+  <script src="./src/ts/loadGame.js" type="module"></script>
+  <script src="./src/ts/gallary.js" type="module"></script>
+  <script src="./src/ts/setting.js" type="module"></script>
 </body>
 </html>
