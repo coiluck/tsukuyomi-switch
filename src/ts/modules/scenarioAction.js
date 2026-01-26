@@ -1,6 +1,6 @@
 // scenarioAction.js
 import { showModal, closeModal } from "./changeModal.js";
-import { globalGameState } from './gameState.js';
+import { globalGameState } from './gameState';
 
 export async function nextDay(nextDay, backgroundImage, clickTextColor = 'white') {
   // セットアップ処理

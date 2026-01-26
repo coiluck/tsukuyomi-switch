@@ -1,6 +1,6 @@
 // scenario.js
 import { nextDay, MoveBackgroundImage, changeBackgroundImage, shakeBackgroundImage, openBackgroundImage } from './scenarioAction.js';
-import { globalGameState } from './gameState.js';
+import { globalGameState } from './gameState';
 
 export const openingScenario = [
   {

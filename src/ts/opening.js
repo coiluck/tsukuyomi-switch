@@ -19,7 +19,7 @@ document.getElementById("top-button-start").addEventListener("click", () => {
   updateStory();
 });
 
-import { globalGameState } from './modules/gameState.js';
+import { globalGameState } from './modules/gameState';
 
 document.getElementById('modal-opening').addEventListener('click', () => {
   if (isDisplayingSelection || isUpdating) {
@@ -231,7 +231,7 @@ async function displayText(text) {
       break;
     }
   }
-  const delay = 30 - textSpeed * 3;
+  const delay = 42 - textSpeed * 5;
   document.getElementById('opening-text').innerHTML = '';
   const textArray = text.split('');
   for (const char of textArray) {
