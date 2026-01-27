@@ -105,6 +105,7 @@ async function displayStory(index, executeAction = true) {
 
   // テキストを表示
   await displayText(story.text);
+  globalGameState.storyData.currentText = story.text;
 
   // 選択肢を消去(戻るボタンで選択肢が残るのを防ぐ)
   if (isDisplayingSelection) {

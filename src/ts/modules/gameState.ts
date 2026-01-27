@@ -8,10 +8,7 @@ interface gameState {
     displayHistory: any[];
     currentText: string | null;
   },
-  gameData: {
-    root: 'DAY 01' | 'DAY 02' | 'Ending';
-    girlPoint: number;
-  },
+  root: 'DAY 01' | 'DAY 02' | 'Ending' | null;
   LoadImageSrc: string;
   savedAt?: string;
 }
@@ -29,10 +26,7 @@ const initialGameState = {
     branchStack: [],
     displayHistory: [],
   },
-  gameData: {
-    root: null,
-    girlPoint: 0,
-  },
+  root: null,
   LoadImageSrc: './src/assets/images/background/nightsky.png',
 };
 
@@ -106,7 +100,7 @@ export async function loadGameExcerpt(slotId: number): Promise<any> {
   const savedData = await store.get<gameState>(key);
   if (savedData) {
     return {
-      root: savedData.gameData.root,
+      root: savedData.root,
       savedAt: savedData.savedAt,
       currentText: savedData.storyData.currentText,
       LoadImageSrc: savedData.LoadImageSrc,

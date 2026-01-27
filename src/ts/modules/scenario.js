@@ -5,7 +5,10 @@ import { globalGameState } from './gameState';
 export const openingScenario = [
   {
     text: "――ここは、どこ?",
-    speaker: "？？？"
+    speaker: "？？？",
+    action: async () => {
+      globalGameState.root = 'DAY 01';
+    }
   },
   { text: "目を開けると、わたしは暗闇の中にいた。" },
   { text: "……いや、よく見ると、暗闇ではない。空には無数の星が瞬いている。" },
