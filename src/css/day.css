@@ -43,47 +43,93 @@
 
 .day-container {
   position: absolute;
-  top: 30%;
-  left: 5%;
-  width: 120%;
+  left: 0;
+  width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  justify-items: center;
+  display: flex;
+  transition: transform 1s ease-in-out;
 }
-.day-container.animate {
-  animation: slide 1s linear forwards;
+.day-container.endingAnimate {
+  animation: ending-slide 1s linear forwards;
 }
-@keyframes slide {
+@keyframes ending-slide {
   0% {
     transform: translateX(0);
   }
   45% {
-    transform: translateX(-28%);
+    transform: translateX(-37%);
   }
   75% {
-    transform: translateX(-23%);
+    transform: translateX(-30.3%);
   }
   90% {
-    transform: translateX(-26%);
+    transform: translateX(-34.3%);
   }
   100% {
-    transform: translateX(-25%);
+    transform: translateX(-33%);
   }
+}
+.day-container.day1Animate {
+  animation: day1-slide 1s linear forwards;
+}
+@keyframes day1-slide {
+  0% {
+    transform: translateX(66%);
+  }
+  45% {
+    transform: translateX(29%);
+  }
+  75% {
+    transform: translateX(35.7%);
+  }
+  90% {
+    transform: translateX(31.7%);
+  }
+  100% {
+    transform: translateX(33%);
+  }
+}
+.day-container.day2Animate {
+  animation: day2-slide 1s linear forwards;
+}
+@keyframes day2-slide {
+  0% {
+    transform: translateX(33%);
+  }
+  45% {
+    transform: translateX(-4%);
+  }
+  75% {
+    transform: translateX(2.7%);
+  }
+  90% {
+    transform: translateX(-1.3%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+.day-item-center-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300%;
+  height: 3px;
+  background: #efe1f2;
 }
 .day-item {
   position: relative;
   width: 100%;
-  height: fit-content;
-  padding: 25px 0;
+  height: 100%;
   text-align: center;
 }
-.day-item:not(.misenai)::before {
+.day-item::before {
   content: '';
   position: absolute;
-  bottom: 4px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: 15px;
   height: 15px;
   background: #f79cac;
@@ -91,34 +137,12 @@
   z-index: 1;
   box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.5);
 }
-.day-item::after {
-  content: '';
-  position: absolute;
-  bottom: 10px;
-  left: -1px; /* アンチエイリアス対策に追加 */
-  right: -1px;
-  height: 3px;
-  background: #efe1f2;
-  box-shadow: 0 0 10px rgba(181, 181, 181, 0.5);
-}
-.day-item.first::after {
-  left: 50%;
-}
-.day-item:first-child::after {
-  left: -50%;
-}
-.day-item.last::after {
-  right: 50%;
-}
-.day-item:last-child::after {
-  right: -50%;
-}
-
-#day-text-nextCurrent {
-  transition: all 0.5s ease;
-}
 .day-text {
-  position: relative;
+  position: absolute;
+  top: calc(50% - 35px); /* 35はマジックナンバー */
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center center;
   width: fit-content;
   padding: 5px 10px;
   margin: 0 auto;
@@ -129,6 +153,7 @@
   text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.1rem;
   z-index: 0;
+  transition: all 0.5s ease;
 }
 .day-text::before {
   content: '';

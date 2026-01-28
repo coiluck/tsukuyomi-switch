@@ -7,35 +7,43 @@ export async function nextDay(nextDay, backgroundImage, clickTextColor = 'white'
   document.querySelector('#modal-day .day-click-text').textContent = "";
   document.querySelector('#modal-day .day-click-text').classList.remove('fade-in');
   document.querySelector('#modal-day .day-background-image img').src = `/src/assets/images/background/${backgroundImage}`;
-  const maxDay = 3;
-  if (nextDay - 2 > 0) {
-    document.querySelector('#modal-day #day-text-previous').textContent = `Day${nextDay - 2}`;
-    document.querySelector('#modal-day #day-text-previous').style.visibility = 'visible';
-    document.querySelector('#day-text-previous').parentElement.classList.remove('misenai');
-  } else {
-    document.querySelector('#modal-day #day-text-previous').textContent = `invisible`;
-    document.querySelector('#modal-day #day-text-previous').style.visibility = 'hidden';
-    document.querySelector('#day-text-previous').parentElement.classList.add('misenai');
+  document.querySelectorAll('#modal-day .day-text').forEach(el => {
+    el.style.transform = 'translate(-50%,-50%) scale(1)';
+    el.style.top = 'calc(50% - 35px)';
+  });
+  switch (nextDay) {
+    case 1:
+      document.querySelector('#modal-day .day-container').style.transform = 'translateX(66%)';
+      break;
+    case 2:
+      document.querySelector('#modal-day .day-container').style.transform = 'translateX(33%)';
+      break;
+    case 3:
+      document.querySelector('#modal-day .day-container').style.transform = 'translateX(0)';
+      break;
   }
-  document.querySelector('#modal-day #day-text-current').textContent = `Day${nextDay - 1}`;
-  document.querySelector('#modal-day #day-text-nextCurrent').textContent = `Day${nextDay}`;
-  if (nextDay < maxDay) {
-    document.querySelector('#modal-day #day-text-nextNext').textContent = `Day${nextDay + 1}`;
-    document.querySelector('#modal-day #day-text-nextNext').style.visibility = 'visible';
-    document.querySelector('#day-text-nextNext').parentElement.classList.remove('misenai');
-  } else {
-    document.querySelector('#modal-day #day-text-nextNext').textContent = `invisible`;
-    document.querySelector('#modal-day #day-text-nextNext').style.visibility = 'hidden';
-    document.querySelector('#day-text-nextNext').parentElement.classList.add('misenai');
-  }
-  // 表示
+  document.querySelector('#modal-day .day-container').classList.remove('day1Animate', 'day2Animate', 'endingAnimate');
+
   showModal('day');
+
   // DAY更新アニメーション
   await new Promise(resolve => setTimeout(resolve, 750));
-  document.querySelector('#modal-day .day-container').classList.add('animate');
+  switch (nextDay) {
+    case 1:
+      document.querySelector('#modal-day .day-container').classList.add('day1Animate');
+      break;
+    case 2:
+      document.querySelector('#modal-day .day-container').classList.add('day2Animate');
+      break;
+    case 3:
+      document.querySelector('#modal-day .day-container').classList.add('endingAnimate');
+      break;
+  }
   setTimeout(() => {
-    document.getElementById('day-text-nextCurrent').style.scale = '1.5';
-    document.getElementById('day-text-nextCurrent').style.transform = 'translateY(-10px)';
+    // 次のテキストを大きくする
+    const nextText = document.querySelector(`#modal-day .day-item[data-day="${nextDay}"] .day-text`);
+    nextText.style.transform = 'translate(-50%,-50%) scale(1.5)';
+    nextText.style.top = 'calc(50% - 45px)';
   }, 1100);
   // クリック可能にする
   await new Promise(resolve => setTimeout(resolve, 1500));
@@ -47,8 +55,10 @@ export async function nextDay(nextDay, backgroundImage, clickTextColor = 'white'
     closeModal('day');
     setTimeout(() => {
       document.querySelector('#modal-day .day-container').classList.remove('animate');
-      document.getElementById('day-text-nextCurrent').style.scale = '1';
-      document.getElementById('day-text-nextCurrent').style.transform = 'translateY(0)';
+      document.querySelectorAll('#modal-day .day-text').forEach(el => {
+        el.style.transform = 'translate(-50%,-50%) scale(1)';
+        el.style.top = 'calc(50% - 35px)';
+      });
     }, 500);
   }, { once: true });
 }
