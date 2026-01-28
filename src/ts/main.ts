@@ -1,8 +1,8 @@
 // main.ts
 import { initSetting } from './setting';
 import { applyStore } from './modules/gameState';
-import { initSaveGame } from './savegame';
-import { initLoadGame } from './loadGame.js';
+import { initSaveGame } from './saveGame.ts';
+import { initLoadGame } from './loadGame.ts';
 
 document.addEventListener('DOMContentLoaded', async () => {
   await applyStore();

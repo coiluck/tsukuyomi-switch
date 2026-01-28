@@ -240,3 +240,47 @@ async function displayText(text) {
     await new Promise(resolve => setTimeout(resolve, delay));
   }
 }
+
+// ロードしたデータの復元処理
+export async function restoreGameFromGlobalState() {
+  openingStoryIndex = globalGameState.storyData.openingStoryIndex;
+  branchStack = JSON.parse(JSON.stringify(globalGameState.storyData.branchStack));
+  displayHistory = JSON.parse(JSON.stringify(globalGameState.storyData.displayHistory));
+
+  // フラグやUIのリセット
+  isDisplayingSelection = false;
+  isUpdating = false;
+
+  const choicesContainer = document.getElementById('opening-choices-container');
+  if (choicesContainer) {
+    choicesContainer.innerHTML = '';
+    choicesContainer.style.display = 'none';
+    choicesContainer.style.pointerEvents = 'none';
+  }
+
+  const backgroundImageContainer = document.getElementById('opening-background-image-container');
+  const backgroundImage = backgroundImageContainer.querySelector('.background-image');
+  backgroundImage.src = globalGameState.LoadImageSrc;
+
+  // 現在の表示位置（インデックス）を特定
+  const isBranch = branchStack.length > 0;
+  let index;
+  let currentScenario;
+
+  if (isBranch) {
+    // 分岐中の場合
+    index = branchStack[branchStack.length - 1].index;
+    currentScenario = branchStack[branchStack.length - 1].scenario;
+  } else {
+    // 共通ルートの場合
+    index = openingStoryIndex;
+    currentScenario = Scenario;
+  }
+  await displayStory(index, false);
+  if (isBranch) {
+    branchStack[branchStack.length - 1].index++;
+  } else {
+    openingStoryIndex++;
+  }
+  console.log('Game state restored successfully.');
+}
