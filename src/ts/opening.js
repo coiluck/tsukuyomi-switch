@@ -61,9 +61,13 @@ async function updateStory() {
 
   // 表示した状態を履歴に追加
   displayHistory.push({
-    scenario: scenario,
+    isBranch: isBranch,
+    branchStackData: branchStack.map(b => ({
+      choiceId: b.choiceId,
+      choiceIndex: b.choiceIndex,
+      index: b.index
+    })),
     index: index,
-    branchStack: JSON.parse(JSON.stringify(branchStack)),
     openingStoryIndex: openingStoryIndex
   });
 
@@ -139,7 +143,7 @@ function displayChoices(choiceId) {
     return;
   }
 
-  choiceData.forEach(choice => {
+  choiceData.forEach((choice, choiceIndex) => {
     const button = document.createElement('button');
     button.classList.add('choice-button');
     button.textContent = choice.buttonText;
@@ -151,6 +155,8 @@ function displayChoices(choiceId) {
       // 選択された分岐ストーリーを保存
       branchStack.push({
         scenario: choice.branch,
+        choiceId: choiceId,
+        choiceIndex: choiceIndex,
         index: 0
       });
 
@@ -197,7 +203,7 @@ document.getElementById('opening-icon-prev-text').addEventListener('click', (eve
   const prevState = displayHistory[displayHistory.length - 1];
 
   // 状態を「prevState」が表示された時点の状態に復元
-  branchStack = JSON.parse(JSON.stringify(prevState.branchStack));
+  branchStack = restoreBranchStack(prevState.branchStackData);
   openingStoryIndex = prevState.openingStoryIndex;
 
   const isBranch = branchStack.length > 0;
@@ -215,11 +221,34 @@ document.getElementById('opening-icon-prev-text').addEventListener('click', (eve
   });
 });
 
+// branchStackDataから実際のbranchStackを復元
+function restoreBranchStack(branchStackData) {
+  return branchStackData.map(data => {
+    const choiceData = Choices[data.choiceId];
+    const choice = choiceData[data.choiceIndex];
+    return {
+      scenario: choice.branch,
+      choiceId: data.choiceId,
+      choiceIndex: data.choiceIndex,
+      index: data.index
+    };
+  });
+}
+
 // storyDataを更新
 function updateGlobalGameState() {
   globalGameState.storyData.openingStoryIndex = openingStoryIndex;
-  globalGameState.storyData.branchStack = JSON.parse(JSON.stringify(branchStack));
-  globalGameState.storyData.displayHistory = JSON.parse(JSON.stringify(displayHistory));
+  globalGameState.storyData.branchStackData = branchStack.map(b => ({
+    choiceId: b.choiceId,
+    choiceIndex: b.choiceIndex,
+    index: b.index
+  }));
+  globalGameState.storyData.displayHistory = displayHistory.map(h => ({
+    isBranch: h.isBranch,
+    branchStackData: h.branchStackData,
+    index: h.index,
+    openingStoryIndex: h.openingStoryIndex
+  }));
 }
 
 // テキストを表示
@@ -244,8 +273,17 @@ async function displayText(text) {
 // ロードしたデータの復元処理
 export async function restoreGameFromGlobalState() {
   openingStoryIndex = globalGameState.storyData.openingStoryIndex;
-  branchStack = JSON.parse(JSON.stringify(globalGameState.storyData.branchStack));
-  displayHistory = JSON.parse(JSON.stringify(globalGameState.storyData.displayHistory));
+
+  // branchStackDataから実際のbranchStackを復元
+  branchStack = restoreBranchStack(globalGameState.storyData.branchStackData || []);
+
+  // displayHistoryも同様に復元
+  displayHistory = (globalGameState.storyData.displayHistory || []).map(h => ({
+    isBranch: h.isBranch,
+    branchStackData: h.branchStackData,
+    index: h.index,
+    openingStoryIndex: h.openingStoryIndex
+  }));
 
   // フラグやUIのリセット
   isDisplayingSelection = false;
@@ -262,7 +300,7 @@ export async function restoreGameFromGlobalState() {
   const backgroundImage = backgroundImageContainer.querySelector('.background-image');
   backgroundImage.src = globalGameState.LoadImageSrc;
 
-  // 現在の表示位置（インデックス）を特定
+  // 現在の表示位置(インデックス)を特定
   const isBranch = branchStack.length > 0;
   let index;
   let currentScenario;

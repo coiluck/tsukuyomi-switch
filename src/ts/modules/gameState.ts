@@ -27,7 +27,7 @@ const initialGameState = {
     displayHistory: [],
   },
   root: null,
-  LoadImageSrc: './src/assets/images/background/nightsky.png',
+  LoadImageSrc: './src/assets/images/background/bushitu_daytime.jpg',
 };
 
 const initialSettingsState = {

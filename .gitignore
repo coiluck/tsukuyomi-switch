@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# シナリオ作成用
+makeNovelFile.py
+output.txt

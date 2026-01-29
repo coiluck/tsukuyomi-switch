@@ -8,6 +8,7 @@ document.querySelector('.savegame-close-button-container')?.addEventListener('cl
 
 import { loadGameExcerpt, saveGameData } from './modules/gameState.ts';
 import { showConfirmWindow } from './modules/message.ts';
+import { initLoadGame } from './loadGame.ts';
 
 export async function initSaveGame() {
   const saveItemConttainer = document.querySelector('.savegame-container') as HTMLElement;
@@ -49,6 +50,7 @@ export async function initSaveGame() {
           await saveGameData(slotId);
           // 保存後に再描画
           await initSaveGame();
+          await initLoadGame();
         },
         onCancel: () => {
           saveItem.classList.remove('selected');
