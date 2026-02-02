@@ -1,6 +1,7 @@
 // scenario.js
 import { nextDay, MoveBackgroundImage, changeBackgroundImage, shakeBackgroundImage, openBackgroundImage } from './scenarioAction.js';
 import { globalGameState } from './gameState';
+import { changeCharacterImage, deleteCharacterTatie } from './character';
 
 export const openingScenario = [
   {
@@ -430,33 +431,51 @@ export const openingChoices = {
         {
           text: '「もう、お兄ちゃん遅い！ 連絡くらいしてよ...ね...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: 'リビングから顔を出した妹のひなは、腕組みをしてプリプリと怒っていたが――俺の姿を見た瞬間、その動きがピタリと止まった。' },
         {
           text: '「...え？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'ひなは目を点にして、俺の顔と、ぶかぶかの制服を交互に見る。' },
         { text: 'そして、玄関の外をキョロキョロと確認してから、警戒心丸出しの声で言った。' },
         {
           text: '「...誰？ お兄ちゃんの制服着て...何してるの？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
         },
         { text: '「あー...いや、その」' },
         {
           text: '「もしかして、お兄ちゃんの彼女...はないか。泥棒？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: 'ひながジリジリと後ずさり、近くにあった掃除機を構える。' },
         { text: '「ま、待て！ 俺だ、お兄ちゃんだよ！」' },
         {
           text: '「はあ？ 何言ってるの？ 声も全然違うし」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: '「いや、これはその...オカルト部の実験で...」' },
         {
           text: '「オカルト部...？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: 'ひなの眉がピクリと動く。' },
         { text: '「変な儀式やったら、失敗してこうなったんだよ！ 明日の満月の夜には戻れるはずだから！」' },
@@ -465,17 +484,26 @@ export const openingChoices = {
           text: '「なら問題出してあげる。今朝の朝食は？」',
           speaker: 'ひな',
           choiceId: 'c01',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         {
           text: '「じゃあ、私の名前の由来は？」',
           speaker: 'ひな',
           choiceId: 'c02',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: '「3月3日の雛祭りに生まれたから『ひな』。......安直すぎるって、小さい頃よく泣いてたよな」' },
         { text: '俺がそういうと、ひなは振り上げていた掃除機をゆっくりおろした。' },
         {
           text: '「本当に...お兄ちゃん、なの？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: '「ああ。信じてくれ」' },
         { text: '至近距離で顔を覗き込まれる。' },
@@ -483,41 +511,65 @@ export const openingChoices = {
         {
           text: '「...確かに。その情けない目つきは、お兄ちゃんかも」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: '「情けないって言うな」' },
         {
           text: '「そっか...へぇ...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'ひなは俺の周りをぐるりと一周すると、少し呆れたようにため息をついた。' },
         {
           text: '「相変わらずバカなことばっかりして...。心配して損した」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: '「悪かったよ...」' },
         {
           text: '「で、元に戻れるの？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', false);
+          }
         },
         { text: '「ああ。明日の夜、満月の光を使って逆儀式をすれば戻れるらしい」' },
         {
           text: '「...らしい？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「多分、な」' },
         {
           text: '「多分って...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: 'ひなが頭を抱える。' },
         {
           text: '「もう...お兄ちゃんのバカ！ なんでそんな怪しい実験に付き合ってるのよ！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
         },
         { text: '「悪かったって...」' },
         {
           text: '「全然反省してないでしょ！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
         },
         { text: 'ひなが俺の額を指で小突く。' },
         { text: 'その仕草は、いつも通りのひなだ。' },
@@ -525,16 +577,25 @@ export const openingChoices = {
         {
           text: '「...とりあえず、お風呂入ってきなよ。そのぶかぶかの制服、変だから」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「そうだな...」' },
         {
           text: '「後で着替え持ってくから、脱衣所に置いとくね」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: '「ああ、助かる」' },
         {
           text: '「...別に、お兄ちゃんのためじゃないからね」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         {
           text: 'そう言いながらも、ひなの表情は少し柔らかかった。',
@@ -568,31 +629,49 @@ export const openingChoices = {
         {
           text: '「あ、出てきた。...髪、ちゃんと乾かした？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: '「一応な」' },
         {
           text: '「嘘。まだ濡れてるじゃん」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: 'ひながじっと俺を見る。' },
         {
           text: '「...座りなさい」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: '「え？」' },
         {
           text: '「いいから座って。...仕方ないでしょ、お兄ちゃんじゃ絶対できないし」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: '言われるままにソファに座ると、ひながタオルとドライヤーを持ってきた。' },
         {
           text: '「ほら、前向いて」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: '「...何する気だ?」' },
         {
           text: '「髪、乾かしてあげるの。そのままじゃ風邪ひくでしょ」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: 'そう言って、ひなは俺の後ろに座った。' },
         { text: 'タオルで優しく髪を拭かれる感覚。続いて、ドライヤーの温かい風が髪に当たる。' },
@@ -601,6 +680,9 @@ export const openingChoices = {
         {
           text: '「...私も昔、お母さんにやってもらったの、覚えてる？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: '不意に、ひながそう聞いてきた。' },
         { text: '「ああ...」' },
@@ -608,11 +690,17 @@ export const openingChoices = {
         {
           text: '「...お兄ちゃん」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: '「ん？」' },
         {
           text: '「明日、ちゃんと元に戻ってよね」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'その言葉には、普段のひなには見せない、小さな不安が滲んでいた。' },
         { text: '「ああ」' },
@@ -620,17 +708,26 @@ export const openingChoices = {
         {
           text: '「...はい、完成」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', true);
+          }
         },
         { text: 'ひながドライヤーを止める。' },
         { text: '「ありがとう」' },
         {
           text: '「...ふん。仕方なくやっただけだから」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: 'そう言いながらも、ひなの表情はどこか満足げだった。' },
         {
           text: '「さ、冷めないうちにご飯食べよ」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「ああ」' },
         { text: '二人でテーブルに向かい合って座る。' },
@@ -645,17 +742,26 @@ export const openingChoices = {
         {
           text: '「...そう」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: 'ひなが少しだけ嬉しそうに笑う。' },
         { text: 'しばらく無言で食事を続けていたが、ふとひなが口を開いた。' },
         {
           text: '「...ねえ、お兄ちゃん」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: '「ん？」' },
         {
           text: '「その姿でも...お兄ちゃんは、お兄ちゃんなんだよね」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         {
           text: '真剣な目で、ひなが俺を見つめる。',
@@ -665,14 +771,25 @@ export const openingChoices = {
         {
           text: '「じゃあ、私は自分の部屋に戻るから」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: '「ああ」' },
         {
           text: '「...おやすみ、お兄ちゃん」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', false);
+          }
         },
         { text: '「おやすみ」' },
-        { text: 'ひなが自分の部屋へと向かっていく。' },
+        {
+          text: 'ひなが自分の部屋へと向かっていく。',
+          action: async () => {
+            deleteCharacterTatie();
+          }
+        },
         {
           text: '俺も自分の部屋に戻った。',
           action: async () => {
@@ -713,11 +830,17 @@ export const openingChoices = {
         {
           text: '「お兄ちゃん、今日どうするの？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: '「どうするって？」' },
         {
           text: '「だって、満月は今夜でしょ？ それまでずっと家にいるの？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'そう言われて、俺は時計を見た。' },
         { text: 'まだ午前中。元に戻れるのは夜だ。' },
@@ -1034,6 +1157,9 @@ export const openingChoices = {
         {
           text: '「なわけないでしょ、朝からパーティーするわけないじゃん！ やっぱり偽物でしょ！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
         },
         { text: '「じょ、冗談だって！」' },
       ],
@@ -1049,18 +1175,35 @@ export const openingChoices = {
     {
       buttonText: 'ありがとな',
       branch: [
-        { text: '「...っ」' },
+        {
+          text: '「...っ」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
+        },
         { text: 'ひなが顔を赤らめて、ぷいっと顔を背ける。' },
         {
           text: '「だ、だから！ お兄ちゃんのためじゃなくて、家が汚れるのが嫌なだけだから！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'blush', true);
+          }
         },
         { text: '「はいはい」' },
         {
           text: '「もう！ 早くお風呂入ってきなさいよ！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
         },
-        { text: 'ひなに押されるようにして、俺は風呂場へと向かった。' },
+        {
+          text: 'ひなに押されるようにして、俺は風呂場へと向かった。',
+          action: async () => {
+            deleteCharacterTatie();
+          }
+        },
       ],
     },
     {
@@ -1069,15 +1212,26 @@ export const openingChoices = {
         {
           text: '「う、うるさい、いいから早く入ってきなさいよ！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
         },
         { text: 'ひなが頬を膨らませる。' },
         { text: 'その反応が可愛くて、少し笑ってしまった。' },
         {
           text: '「わ、笑わないでよ！ その顔で笑われると...変な感じ！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'blush', true);
+          }
         },
         { text: '「悪い悪い」' },
-        { text: '俺は慌てて謝り、風呂場に入った。' },
+        {
+          text: '俺は慌てて謝り、風呂場に入った。',
+          action: async () => {
+            deleteCharacterTatie();
+          }
+        },
       ],
     }
   ],
@@ -1085,11 +1239,29 @@ export const openingChoices = {
     {
       buttonText: '当たり前だろ',
       branch: [
-        { text: '「...そっか」' },
+        {
+          text: '「...そっか」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
+        },
         { text: 'ひながほっとしたように笑った。' },
-        { text: '「うん。そうだよね」' },
+        {
+          text: '「うん。そうだよね」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
+        },
         { text: '「どうした、急に」' },
-        { text: '「ううん。ちょっと...確認したかっただけ」' },
+        {
+          text: '「ううん。ちょっと...確認したかっただけ」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
+        },
         { text: 'ひなは俯いて、箸を動かし始めた。' },
         { text: 'その横顔は、どこか安心したようにも見えた。' },
       ],
@@ -1097,11 +1269,29 @@ export const openingChoices = {
     {
       buttonText: '不安か？',
       branch: [
-        { text: '「...ちょっとね」' },
+        {
+          text: '「...ちょっとね」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
+        },
         { text: 'ひなが正直に頷く。' },
-        { text: '「だって、見た目が全然違うから...本当にお兄ちゃんなのかなって」' },
+        {
+          text: '「だって、見た目が全然違うから...本当にお兄ちゃんなのかなって」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
+        },
         { text: '「中身は変わってないよ」' },
-        { text: '「...うん。分かってる」' },
+        {
+          text: '「...うん。分かってる」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
+        },
         { text: 'ひなが小さく笑う。' },
       ],
     }
@@ -1205,31 +1395,56 @@ export const openingChoices = {
         {
           text: '「...じゃあ、私も付き合ってあげる」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', true);
+          }
         },
         { text: 'ひなが少し嬉しそうに言う。' },
         { text: '「いいのか？」' },
         {
           text: '「別に暇だし。それに...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「それに？」' },
         {
           text: '「...一人にしとくと、また変なことしそうだから」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', false);
+          }
         },
         { text: '「しないよ」' },
         {
           text: '「信用できない」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: '俺は苦笑する。' },
         {
           text: '「じゃあ、準備してくるから。お兄ちゃんは先にリビング行ってて」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
-        { text: '「おう」' },
+        {
+          text: '「おう」',
+          action: async () => {
+            deleteCharacterTatie();
+          }
+        },
         // 6.mdへ
-        { text: '数分後、ひながリビングに戻ってきた。' },
+        {
+          text: '数分後、ひながリビングに戻ってきた。',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
+        },
         {
           text: '手には二つのゲームコントローラーを持っている。',
           choiceId: 'h01',
@@ -1242,20 +1457,34 @@ export const openingChoices = {
         {
           text: '「え...その姿で？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: '「どうせ今夜には戻るんだし。せっかくだから、ちょっと散歩くらい」' },
         {
           text: '「...本当に大丈夫？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', false);
+          }
         },
         { text: '「多分な」' },
         {
           text: '「...気をつけてよね」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'ひなが心配そうに俺を見る。' },
         { text: '「ああ」' },
-        { text: '軽く手を振って、俺は家を出た。' },
+        {
+          text: '軽く手を振って、俺は家を出た。',
+          action: async () => {
+            deleteCharacterTatie();
+          }
+        },
         // 7.mdへ
         { text: '「...ふぅ」' },
         {
@@ -1682,40 +1911,59 @@ export const openingChoices = {
         {
           text: '「お兄ちゃん！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: 'ひなが飛び出してくる。' },
         {
           text: '「遅い！ 昨日帰ってこないし、今朝も電話に出ないし...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: 'そこでひなの言葉が止まる。' },
         { text: '俺の姿を見て、目を丸くした。' },
         {
           text: '「...誰？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「あー...その、俺だよ」' },
         {
           text: '「え？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', false);
+          }
         },
         { text: 'ひなが首を傾げる。' },
         { text: '「俺。お兄ちゃん」' },
         {
           text: '「...は？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '数秒の沈黙。' },
         { text: 'そして――' },
         {
           text: '「...ええええ！？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
         },
         { text: 'ひなの悲鳴が響き渡った。' },
         {
           text: 'リビングのソファに並んで座る。',
           action: async () => {
             changeBackgroundImage('opening', 'living_daytime.jpg');
+            deleteCharacterTatie();
             await new Promise(resolve => setTimeout(resolve, 1000));
           }
         },
@@ -1723,32 +1971,50 @@ export const openingChoices = {
         {
           text: '「つまり...お兄ちゃんが、女の子に...？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: '「ああ」' },
         { text: 'しばらく沈黙が続いた後、ひなが深くため息をついた。' },
         {
           text: '「...はぁ。お兄ちゃんらしいっていうか、なんていうか」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', false);
+          }
         },
         { text: '「悪かったよ」' },
         {
           text: '「謝られても困るんだけど...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: 'ひなが俺の周りをぐるりと一周する。' },
         {
           text: '「...本当に女の子になってる」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「見ての通り」' },
         {
           text: '「その格好、ルカさんの？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: '「ああ。借りてきた」' },
         {
           text: '「ふーん...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', false);
+          }
         },
         { text: 'ひなが何か言いたげな表情をするが、それ以上は何も言わなかった。' },
         { text: 'ひながじっと俺を見つめる。' },
@@ -1757,72 +2023,118 @@ export const openingChoices = {
         {
           text: '「いや...可愛いなって」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: '「言うな」' },
         {
           text: '「だって本当のことじゃん」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: 'ひながクスッと笑う。' },
         { text: 'その笑顔を見て、少しだけ安心した。' },
         {
           text: '「で、いつ戻れるの？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: '「今夜。満月の光を浴びて儀式をすれば、元に戻れるはず」' },
         {
           text: '「...はず？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「多分、大丈夫だと思う」' },
         {
           text: '「心配だなあ...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', false);
+          }
         },
         { text: 'ひなが不安そうに眉を寄せる。' },
         { text: '「大丈夫だって。ルカがちゃんと調べてくれたから」' },
         {
           text: '「...そっか」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', true);
+          }
         },
         { text: 'ひなが小さく頷いた。' },
         {
           text: '「それまで、どうするの？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「んー...特に予定もないし」' },
         {
           text: '「じゃあ...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: 'ひなが少し考えてから、顔を上げた。' },
         {
           text: '「一緒にゲームでもする？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: '「え？」' },
         {
           text: '「だって、暇なんでしょ？ それに...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'ひなが少し照れくさそうに視線を逸らす。' },
         {
           text: '「...せっかく帰ってきたんだし」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'blush', false);
+          }
         },
         { text: 'その言葉に、思わず笑ってしまった。' },
         { text: '「わかった。付き合ってやるよ」' },
         {
           text: '「やった！ じゃあ、準備してくるね！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
-        { text: 'ひなが嬉しそうに立ち上がり、自分の部屋へ駆けていった。' },
+        {
+          text: 'ひなが嬉しそうに立ち上がり、自分の部屋へ駆けていった。',
+          action: async () => {
+            deleteCharacterTatie();
+          }
+        },
         { text: '残された俺は、ソファに体を預けた。' },
         { text: '妹に受け入れてもらえて、少しほっとした。' },
         { text: '今夜までの時間を、ひなと過ごすのも悪くない。' },
         { text: 'そう思いながら、俺はひなが戻ってくるのを待った。' },
         // 6.mdへ
-        { text: '数分後、ひながリビングに戻ってきた。' },
+        {
+          text: '数分後、ひながリビングに戻ってきた。',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
+        },
         {
           text: '手には二つのゲームコントローラーを持っている。',
           choiceId: 'h01',
@@ -1837,17 +2149,26 @@ export const openingChoices = {
         {
           text: '「お兄ちゃんが好きなやつでいいよ」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: 'ひながテレビの前に座り込み、ゲーム機の電源を入れる。' },
         { text: '「じゃあ、あの対戦ゲームとか？」' },
         {
           text: '「いいよ。...容赦しないからね」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: '「その台詞、いつも負けてるお前が言うか？」' },
         {
           text: '「う、うるさい！ 今日は違うもん！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
         },
         { text: 'ひなが頬を膨らませる。' },
         { text: 'その仕草は、小さい頃から変わらない。' },
@@ -1856,12 +2177,18 @@ export const openingChoices = {
         {
           text: '「...お兄ちゃん、その姿だとなんか変な感じ」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'ひながちらりと俺を見る。' },
         { text: '「そうか？」' },
         {
           text: '「うん。...でも仕草は、やっぱりお兄ちゃんだね」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', false);
+          }
         },
         { text: '「当たり前だろ」' },
         { text: '試合が始まる。' },
@@ -1869,61 +2196,94 @@ export const openingChoices = {
         {
           text: '「あれ？ お兄ちゃん、弱くなった？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: '「...体が小さくなったせいで、コントローラーの感覚が違うんだよ」' },
         {
           text: '「言い訳ー」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', true);
+          }
         },
         { text: 'ひながニヤリと笑う。' },
         { text: 'そして、最後の一撃。' },
         {
           text: '「勝った！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: 'ひなが両手を上げて喜ぶ。' },
         { text: '「くっ...もう一回」' },
         {
           text: '「いいよ。何回でも相手してあげる」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'その後、何度か対戦を繰り返した。' },
         { text: '何度もやると次第に間隔を取り戻していき、俺がひなを圧倒していく。' },
         {
           text: '「あー！ ずるい！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
         },
         { text: '「ずるくない。お前が下手なだけ」' },
         {
           text: '「むー...！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', false);
+          }
         },
         { text: 'ひなが真剣な顔でコントローラーを握りしめる。' },
         { text: 'その表情が可笑しくて、少し笑ってしまった。' },
         {
           text: '「笑わないでよ！ ...あ、また負けた！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
         },
         { text: '「もう一回やるか？」' },
         {
           text: '「当たり前でしょ！ 今度は勝つんだから！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', true);
+          }
         },
         { text: '何度も何度も対戦を繰り返す。' },
         {
           text: '「...はぁ」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'ひながため息をついてコントローラーを置いた。' },
         { text: '「疲れたか？」' },
         {
           text: '「ちょっとね...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: 'ひながソファに体を預ける。' },
         {
           text: '「...お腹空いたね」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'ふいに、ひながそう言った。' },
         { text: '時計を見ると、もう昼過ぎになっている。' },
@@ -1931,53 +2291,77 @@ export const openingChoices = {
         {
           text: '「...お兄ちゃん、その姿で料理できるの？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', true);
+          }
         },
         { text: '「体が変わっても、腕は同じだろ」' },
         {
           text: '「そうだけど...」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'ひなが少し心配そうに俺を見る。' },
         { text: '「大丈夫だって。一緒に作ろうぜ」' },
         {
           text: '「...うん」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: '二人でキッチンに立つ。' },
-        {
-          text: '「何作る？」',
-          speaker: 'ひな',
-        },
+        { text: '「何作る？」' },
         {
           text: '「んー...パスタとかどう？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', false);
+          }
         },
         { text: '「いいな。じゃあ、ひなは野菜切ってくれ」' },
         {
           text: '「はーい」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', true);
+          }
         },
         { text: 'ひなが冷蔵庫から野菜を取り出す。' },
         { text: '俺はパスタを茹でる準備を始めた。' },
         {
           text: '「...ねえ、お兄ちゃん」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「ん？」' },
         {
           text: '「その姿だと、なんか...妹みたい」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: '包丁を動かしながら、ひながそう言った。' },
         { text: '「は？」' },
         {
           text: '「だって、見た目私より小さいし...可愛いし」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: '「可愛いって言うな」' },
         {
           text: '「事実じゃん」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: 'ひながクスクスと笑う。' },
         { text: 'その笑顔を見て、少しだけ緊張が解けた気がした。' },
@@ -1985,6 +2369,9 @@ export const openingChoices = {
         {
           text: '「そうだね。...今日だけ」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: 'ひなが小さく繰り返す。' },
         { text: '料理を作りながら、他愛もない会話を続ける。' },
@@ -1992,17 +2379,26 @@ export const openingChoices = {
         {
           text: '「はい、完成！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: 'ひなが皿にパスタを盛り付ける。' },
         { text: '「お、美味そうだな」' },
         {
           text: '「当たり前でしょ。私が作ったんだから」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「俺も作ったし...」' },
         {
           text: '「細かいことは気にしないの！」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', false);
+          }
         },
         { text: '二人でテーブルに向かい合って座る。' },
         {
@@ -2013,16 +2409,25 @@ export const openingChoices = {
         {
           text: '「...ねえ、お兄ちゃん」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「ん？」' },
         {
           text: '「女の子になって...何か変わった？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: '「変わったって？」' },
         {
           text: '「その...気持ちとか、感じ方とか」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         {
           text: '真剣な目で、ひなが俺を見つめる。',
@@ -2037,16 +2442,25 @@ export const openingChoices = {
         {
           text: '「...ねえ、お兄ちゃん」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: '「ん？」' },
         {
           text: '「今日、一日一緒にいてくれてありがと」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'blush', false);
+          }
         },
         { text: '「別に、他に予定もないし」' },
         {
           text: '「...ふん。素直じゃないんだから」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
         },
         { text: 'ひなが少しだけ嬉しそうに笑う。' },
         { text: '窓の外を見ると、空が少しずつ暗くなり始めていた。' },
@@ -2054,18 +2468,27 @@ export const openingChoices = {
         {
           text: '「うん」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
         },
         { text: 'ひなの声が、少しだけ寂しそうに聞こえた。' },
         { text: '「大丈夫。すぐに元に戻れるから」' },
         {
           text: '「...うん。そうだよね」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: 'ひなが小さく頷く。' },
         { text: 'その時、玄関のチャイムが鳴った。' },
         {
           text: '「あ、ルカさんだ」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: 'ひなが立ち上がり、玄関へと向かう。' },
         {
@@ -2075,6 +2498,9 @@ export const openingChoices = {
         {
           text: '「こんばんは。お兄ちゃん、ルカさん来たよ」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
         },
         { text: 'ルカが大きなバッグを持って入ってきた。' },
         {
@@ -2094,16 +2520,25 @@ export const openingChoices = {
         {
           text: '「...そっか」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', true);
+          }
         },
         { text: 'ひながほっとしたように笑った。' },
         {
           text: '「良かった。お兄ちゃんは、お兄ちゃんのままなんだね」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', false);
+          }
         },
         { text: '「当たり前だろ」' },
         {
           text: '「うん...そうだよね」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: 'ひなが安心したように、パスタを食べ始めた。' },
       ],
@@ -2114,17 +2549,26 @@ export const openingChoices = {
         {
           text: '「え？」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
         },
         { text: '「なんていうか...視線の高さとか、体の感覚とか。いつもと違うんだ」' },
         {
           text: '「...そっか」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', false);
+          }
         },
         { text: 'ひなが少し考え込むような表情をする。' },
         { text: '「でも、中身は変わってないから」' },
         {
           text: '「うん。分かってる」',
           speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', false);
+          }
         },
         { text: 'ひなが小さく笑った。' },
       ],

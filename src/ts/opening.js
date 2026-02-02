@@ -9,6 +9,8 @@ let isUpdating = false;
 let branchStack = []; // 分岐管理
 let displayHistory = []; // 履歴
 
+import { deleteCharacterTatie } from './modules/character';
+
 document.getElementById("top-button-start").addEventListener("click", () => {
   // 初期化
   openingStoryIndex = 0;
@@ -16,6 +18,7 @@ document.getElementById("top-button-start").addEventListener("click", () => {
   isUpdating = false;
   branchStack = [];
   displayHistory = [];
+  deleteCharacterTatie();
   updateStory();
 });
 
@@ -82,6 +85,8 @@ async function updateStory() {
   isUpdating = false;
 }
 
+import { deleteCharacterFace } from './modules/character';
+
 async function displayStory(index, executeAction = true) {
 
   const isBranch = branchStack.length > 0;
@@ -105,6 +110,7 @@ async function displayStory(index, executeAction = true) {
     document.getElementById('opening-character-name').textContent = story.speaker;
   } else {
     document.getElementById('opening-character-name').style.visibility = 'hidden';
+    deleteCharacterFace();
   }
 
   // テキストを表示

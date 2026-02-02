@@ -68,13 +68,59 @@
   left: 0;
   padding: 0 10px;
   width: 150px;
-  height: 200px;
+  height: 130px;
   z-index: 2;
 }
-.text-character-container img.text-character {
+.text-character-container img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+}
+.character-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75%;
+  z-index: 0;
+}
+.character-container img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+.character-container img.active {
+  animation: fadeInAndBounce 2s ease-in-out ;
+}
+
+@keyframes fadeInAndBounce {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(-50%, -15px);
+    opacity: 0.5;
+  }
+  20% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  30% {
+    transform: translate(-50%, -8px);
+    opacity: 1;
+  }
+  40% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
 }
 
 /* 背景画像 */
