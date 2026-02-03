@@ -320,7 +320,17 @@ export async function restoreGameFromGlobalState() {
     index = openingStoryIndex;
     currentScenario = Scenario;
   }
+
   await displayStory(index, false);
+
+  // 選択肢
+  if (index < currentScenario.length) {
+    const story = currentScenario[index];
+    if (story.choiceId) {
+      displayChoices(story.choiceId);
+    }
+  }
+
   if (isBranch) {
     branchStack[branchStack.length - 1].index++;
   } else {
