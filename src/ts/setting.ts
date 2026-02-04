@@ -30,14 +30,6 @@ export function initSetting() {
     }
   );
   setupRadioGroup(
-    'cv-volume',
-    globalSettingState.voiceVolume,
-    (value) => {
-      globalSettingState.voiceVolume = value;
-      saveSettingsData();
-    }
-  );
-  setupRadioGroup(
     'text-speed',
     globalSettingState.textSpeed,
     (value) => {
@@ -68,10 +60,12 @@ function setupRadioGroup(name: string, currentValue: number, onUpdate: (val: num
   });
 }
 
-/**
- * 画面サイズ変更ボタンの制御
- */
-function setupScreenSizeControl() {
+import { getCurrentWindow, LogicalSize } from '@tauri-apps/api/window';
+
+// 画面サイズ
+async function setupScreenSizeControl() {
+  const appWindow = getCurrentWindow();
+
   const buttons = document.querySelectorAll('.setting-button-item');
   // HTML構造順: [0] Window, [1] Full Screen
   const windowBtn = buttons[0] as HTMLElement;
@@ -92,22 +86,50 @@ function setupScreenSizeControl() {
 
   // 初期状態の適用
   updateUI(globalSettingState.screenSize as 'window' | 'fullscreen');
+  if (globalSettingState.screenSize === 'fullscreen') {
+    await appWindow.setFullscreen(true);
+  }
 
   // Windowボタンクリック時
-  windowBtn.addEventListener('click', () => {
+  windowBtn.addEventListener('click', async () => {
     globalSettingState.screenSize = 'window';
     saveSettingsData();
     updateUI('window');
-    // TauriのAPIを使ってウィンドウ化する処理をここに追加
-    // appWindow.setFullscreen(false);
+    // ウィンドウにする
+    const isFullscreen = await appWindow.isFullscreen();
+    if (isFullscreen === true) {
+      await appWindow.setFullscreen(false);
+      await appWindow.setSize(new LogicalSize(800, 500));
+    }
   });
 
   // Full Screenボタンクリック時
-  fullScreenBtn.addEventListener('click', () => {
+  fullScreenBtn.addEventListener('click', async () => {
     globalSettingState.screenSize = 'fullscreen';
     saveSettingsData();
     updateUI('fullscreen');
-    // TauriのAPIを使ってフルスクリーン化する処理をここに追加
-    // appWindow.setFullscreen(true);
+    // フルスクリーンにする
+    const isFullscreen = await appWindow.isFullscreen();
+    if (isFullscreen === false) {
+      await appWindow.setFullscreen(true);
+    }
   });
+
+  // escで解除
+  const onKeyDown = async (e: KeyboardEvent) => {
+    const key = e.key;
+    if (key === 'Escape' || key === 'Esc') {
+      const isFullscreen = await appWindow.isFullscreen();
+      if (isFullscreen) {
+        await appWindow.setFullscreen(false);
+        // UI と設定を更新
+        globalSettingState.screenSize = 'window';
+        saveSettingsData();
+        updateUI('window');
+        // ウィンドウサイズを復元
+        await appWindow.setSize(new LogicalSize(800, 500));
+      }
+    }
+  };
+  window.addEventListener('keydown', onKeyDown);
 }
