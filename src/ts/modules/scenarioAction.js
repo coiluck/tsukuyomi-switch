@@ -135,6 +135,40 @@ export function changeBackgroundImage(object, imagePath) {
   });
 }
 
+export function changeBackgroundImageWithCrossFade(FileName) {
+  const container = document.getElementById('opening-background-image-container');
+  const newImageSrc = `./src/assets/images/background/${FileName}`;
+
+  const oldImage = container.querySelector('img.background-image');
+
+  const newImage = document.createElement('img');
+  newImage.src = newImageSrc;
+  newImage.classList.add('background-image');
+  newImage.onload = () => {
+    container.appendChild(newImage);
+    newImage.classList.add('fade-in');
+    if(oldImage.classList.contains('fade-in')) {
+      oldImage.classList.remove('fade-in');
+    }
+    oldImage.classList.add('fade-out');
+    setTimeout(() => {
+      oldImage.remove();
+      globalGameState.LoadImageSrc = newImageSrc;
+    }, 500);
+  };
+}
+
+export function changeBackgroundImageWithoutFade(FileName) {
+  const newImageSrc = `./src/assets/images/background/${FileName}`;
+  const tempImage = new Image();
+  tempImage.src = newImageSrc;
+  tempImage.onload = () => {
+    const container = document.getElementById('opening-background-image-container');
+    const backgroundImage = container.querySelector('img.background-image');
+    backgroundImage.src = newImageSrc;
+  }
+  globalGameState.LoadImageSrc = newImageSrc;
+}
 
 export function shakeBackgroundImage(duration = 500, intensity = 10) {
   const img = document.querySelector('#opening-background-image-container .background-image');

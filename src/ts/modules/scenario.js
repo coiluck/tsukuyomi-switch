@@ -1,7 +1,8 @@
 // scenario.js
-import { nextDay, MoveBackgroundImage, changeBackgroundImage, shakeBackgroundImage, openBackgroundImage } from './scenarioAction.js';
+import { nextDay, MoveBackgroundImage, shakeBackgroundImage, openBackgroundImage } from './scenarioAction.js';
+import { changeBackgroundImage, changeBackgroundImageWithCrossFade, changeBackgroundImageWithoutFade } from './scenarioAction.js';
 import { globalGameState } from './gameState';
-import { changeCharacterImage, deleteCharacterTatie } from './character';
+import { changeCharacterImage, changeCharacterImageWithoutFace, deleteCharacterTatie } from './character';
 
 export const openingScenario = [
   {
@@ -1011,8 +1012,8 @@ export const openingChoices = {
           speaker: 'ルカ',
           action: async () => {
             changeBackgroundImage('opening', 'city_evening.jpg');
-            changeCharacterImage('ruka', 'base', true);
             await new Promise(resolve => setTimeout(resolve, 1000));
+            changeCharacterImage('ruka', 'base', true);
           }
         },
         { text: 'ルカが立ち止まったのは、白い壁の二階建ての一軒家。' },
@@ -1128,8 +1129,8 @@ export const openingChoices = {
           speaker: 'ルカ',
           action: async () => {
             changeBackgroundImage('opening', 'ruka_room_nighttime_light.jpg'); // このままでいい
-            changeCharacterImage('ruka', 'base', true);
             await new Promise(resolve => setTimeout(resolve, 1000));
+            changeCharacterImage('ruka', 'base', true);
           }
         },
         { text: 'ルカがベッドをポンポンと叩く。' },
@@ -1195,7 +1196,7 @@ export const openingChoices = {
         {
           text: '部屋が暗闇に包まれる。',
           action: async () => {
-            changeBackgroundImage('opening', 'ruka_room_nighttime.jpg'); // ここは変える
+            changeBackgroundImageWithCrossFade('ruka_room_nighttime.jpg'); // ここは変える
             await new Promise(resolve => setTimeout(resolve, 1000));
           }
         },
@@ -1237,6 +1238,7 @@ export const openingChoices = {
             nextDay(2, 'bushitu_nighttime.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
             changeBackgroundImage('opening', 'white.png');
+            deleteCharacterTatie();
             globalGameState.root = 'DAY 02';
           }
         },
@@ -1244,14 +1246,14 @@ export const openingChoices = {
           text: '「ん...」',
           action: async () => {
             // あとでfadeなしの切り替えにする
-            changeBackgroundImage('opening', 'ruka_room_daytime.jpg');
+            changeBackgroundImageWithoutFade('ruka_room_daytime.jpg');
             openBackgroundImage();
           }
         },
         {
           text: '目を開けると、視界いっぱいにルカの寝顔があった。',
           action: async () => {
-            changeCharacterImage('ruka', 'sleeping', false);
+            changeCharacterImageWithoutFace('ruka', 'sleeping');
           }
         },
         { text: '「うわっ！？」' },
@@ -2005,8 +2007,7 @@ export const openingChoices = {
         {
           text: '気づけば、窓の外の日差しが少しずつ傾き始めている。',
           action: async () => {
-            // 後で書く -> fadeなしの切り替えにする
-            changeBackgroundImage('opening', 'kissaten_evening.jpg');
+            changeBackgroundImageWithCrossFade('kissaten_evening.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
           }
         },
@@ -2191,8 +2192,8 @@ export const openingChoices = {
           speaker: 'ルカ',
           action: async () => {
             changeBackgroundImage('opening', 'city2_daytime.jpg');
-            changeCharacterImage('ruka', 'base_close', false);
             await new Promise(resolve => setTimeout(resolve, 1000));
+            changeCharacterImage('ruka', 'base_close', false);
           }
         },
         {
