@@ -14,6 +14,9 @@ export const openingScenario = [
   {
     text: '「やっと揃ったよ！」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'base_open', true);
+    }
   },
   { text: 'ここはオカルト部の部室。部員は俺たち二人だけだ。' },
   { text: 'ロウソク、奇妙な文様が描かれた布、そして古めかしい本が机の上に並んでいる。' },
@@ -21,6 +24,9 @@ export const openingScenario = [
   {
     text: '「当たり前でしょ？ 今日はこの実験のために、わざわざ『古の魔道書（通販）』を取り寄せたんだから！」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'base_close', false);
+    }
   },
   {
     text: '彼女は嬉しそうに古い本を指差す。',
@@ -29,42 +35,66 @@ export const openingScenario = [
   {
     text: '「もう！ いつもそうやって疑うんだから」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'pout', false);
+    }
   },
   { text: '「だって、今まで一度も成功してないじゃん」' },
   {
     text: '「うっ...」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'trouble', false);
+    }
   },
   { text: '図星を突かれて、ルカは言葉に詰まる。' },
   {
     text: '「で、でも今回は違うよ！ この本、学校の図書室の奥で見つけたんだけど、すっごく古くて本物っぽいの！」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'a', true);
+    }
   },
   { text: '「本物っぽい、ね...」' },
   {
     text: '「信じてよ〜。ほら、手伝って？」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'pout', false);
+    }
   },
   { text: '「はいはい」' },
   { text: '仕方なく、俺はルカの指示通りに床に円を描いていく。' },
   {
     text: '「そうそう、もうちょっと右！」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'base', true);
+    }
   },
   { text: '「こう？」' },
   {
     text: '「完璧！」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'happy', true);
+    }
   },
   { text: '数分後、床には複雑な魔法陣のようなものが完成した。' },
   {
     text: '「じゃあ、真ん中に立って」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'base', false);
+    }
   },
   { text: '「また俺かよ...」' },
   {
     text: '「だって〜、私がやったら観察できないじゃん」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'perori', false);
+    }
   },
   {
     text: 'そう言いながら、ルカは楽しそうに笑う。',
@@ -74,18 +104,27 @@ export const openingScenario = [
   {
     text: '「オッケー！ それじゃあ始めるよ……」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'base_open', true);
+    }
   },
   { text: 'ルカが本を開き、何やら呪文のようなものを読み始める。' },
   { text: '普段のぼんやりした様子とは違い、妙に真剣な横顔だ。' },
   {
     text: '「――汝、理（ことわり）を違え、境界を越えん」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'serious', false);
+    }
   },
   { text: 'だが、何も起こらない' },
   { text: '「やっぱりな...」' },
   {
     text: '「ちょ、ちょっと待って！ まだ途中だから！」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'trouble', false);
+    }
   },
   { text: 'その時だった。' },
   {
@@ -99,16 +138,25 @@ export const openingScenario = [
     text: '「うそ...光ってる！？」',
     speaker: 'ルカ',
     choiceId: 'a03',
+    action: async () => {
+      changeCharacterImage('ruka', 'surprised', true);
+    }
   },
   {
     text: '「あ、あれ～？ 光ったりしないはずなんだけどな～」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'a', false);
+    }
   },
   { text: '光はどんどん強くなっていく。' },
   { text: '「やばいって！ ルカ、一回止めろ！」' },
   {
     text: '「ど、どうやって！？」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'surprised', true);
+    }
   },
   {
     text: '「っ...！」',
@@ -119,6 +167,7 @@ export const openingScenario = [
     text: '目を開けていられないほどに眩しい光が部屋中を包み込んだ。',
     action: async () => {
       changeBackgroundImage('opening', 'white.png');
+      deleteCharacterTatie();
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
   },
@@ -129,6 +178,7 @@ export const openingScenario = [
     action: async () => {
       changeBackgroundImage('opening', 'bushitu_daytime.jpg');
       await new Promise(resolve => setTimeout(resolve, 1000));
+      changeCharacterImage('ruka', 'base_close', false);
     }
   },
   { text: '恐る恐るルカが声をかける。' },
@@ -137,6 +187,9 @@ export const openingScenario = [
   {
     text: '「よかった...無事...って、え？」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'surprised', true);
+    }
   },
   { text: 'ルカの目が大きく見開かれる。' },
   { text: '「何だよ...って」' },
@@ -154,12 +207,18 @@ export const openingScenario = [
   {
     text: '「え、えっと...」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'surprised', true);
+    }
   },
   { text: 'ルカは完全に固まっている。' },
   { text: '「鏡...鏡ないか！？」' },
   {
     text: '「あ、あるよ！ 待って！」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'a', false);
+    }
   },
   { text: 'ルカが慌てて鞄から手鏡を取り出す。' },
   {
@@ -172,6 +231,9 @@ export const openingScenario = [
   {
     text: '「お、女の子に...なってる...」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'a', true);
+    }
   },
   { text: '「見りゃわかるよ！」' },
   { text: '声を荒げようとしたが、出てくるのは可愛らしい女の子の声。' },
@@ -179,6 +241,9 @@ export const openingScenario = [
   {
     text: '「ご、ごめん！ 私、本当にこんなことになるなんて...！」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'trouble', false);
+    }
   },
   { text: 'ルカが泣きそうな顔で謝る。' },
   { text: '「いや...ルカのせいじゃ...」' },
@@ -187,11 +252,17 @@ export const openingScenario = [
   {
     text: '「あ、あの...とりあえず、確認...しよう？」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'blush', false);
+    }
   },
   { text: '「確認って...」' },
   {
     text: '「その...本当に、全部...女の子になってるのか...とか...」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'blush_close', true);
+    }
   },
   {
     text: 'ルカの顔が真っ赤になる。',
@@ -203,6 +274,9 @@ export const openingScenario = [
   {
     text: '「ど、どう...？」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'base', true);
+    }
   },
   { text: '「...完璧に女だ。胸もあるし...あと、その...下も...」' },
   { text: '完全に性別が変わってしまったようだった。' },
@@ -210,15 +284,24 @@ export const openingScenario = [
   {
     text: '「あ、そうだった。えっとね……」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'a', false);
+    }
   },
   { text: 'ルカは慌てて床に落ちていた古の魔道書（通販）を拾い上げ、ページをめくる。' },
   {
     text: '「えっと……『可逆性の項』……あった。これだ」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'base', false);
+    }
   },
   {
     text: '「『満月の夜に、月光を鏡として逆儀式を行えば』いいっぽいよ！」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'base_open', false);
+    }
   },
   { text: '「満月……？ 次の満月っていつだ？」' },
   { text: '俺は部室のカレンダーに目をやるが、月の満ち欠けは書かれていないようだった。' },
@@ -226,6 +309,9 @@ export const openingScenario = [
   {
     text: '「あ、明日だ！」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'base', true);
+    }
   },
   { text: '明日土曜日の夜まで丸一日、この体で過ごさなければいけない。' },
   {
@@ -245,6 +331,9 @@ export const openingScenario = [
   {
     text: '「そ、その格好で帰るの？」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'a', false);
+    }
   },
   { text: '言われて気づく。今の俺は、ぶかぶかの男子制服を着た、見知らぬ女子生徒だ。' },
   { text: 'このまま校門を出れば不審がられるし、何よりこの姿で家に入ったら...。' },
@@ -253,17 +342,26 @@ export const openingScenario = [
   {
     text: '「ね、ねえ。もし帰るのが難しいなら...」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'blush', false);
+    }
   },
   { text: '「ん？」' },
   {
     text: '「う、うち...来る？」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'blush_close', true);
+    }
   },
   { text: 'ルカの言葉に、俺は動きを止める。' },
   { text: 'ルカは顔を真っ赤にして、慌てて手を振った。' },
   {
     text: '「変な意味じゃなくて！ その、服も貸せるし！」',
     speaker: 'ルカ',
+    action: async () => {
+      changeCharacterImage('ruka', 'blush', true);
+    }
   },
   { text: '「あー...確かに」' },
   { text: '親は出張中。家には妹のひなが一人。' },
@@ -321,6 +419,9 @@ export const openingChoices = {
         {
           text: '「で、でも！ ちゃんと確認しないと！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'blush', true);
+          }
         },
         { text: '「...はあ」' },
         { text: 'ため息をつく。' },
@@ -329,6 +430,9 @@ export const openingChoices = {
         {
           text: '「う、うん！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', true);
+          }
         },
         { text: 'ルカが慌てて背中を向ける。' },
       ],
@@ -340,6 +444,9 @@ export const openingChoices = {
           text: '「で、でも！ ちゃんと確認しないと！」',
           speaker: 'ルカ',
           choiceId: 'b04',
+          action: async () => {
+            changeCharacterImage('ruka', 'blush', true);
+          }
         }
       ],
     },
@@ -350,6 +457,9 @@ export const openingChoices = {
       branch: [
         { text: '「ならいいけど...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'pout', false);
+          }
         },
         { text: 'ルカは残念そうに引き下がる。' },
         { text: 'ただ、まだじっと見られていて脱ぎづらい。' },
@@ -357,6 +467,9 @@ export const openingChoices = {
         {
           text: '「う、うん！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', true);
+          }
         },
         { text: 'ルカが慌てて背中を向ける。' },
       ],
@@ -366,7 +479,13 @@ export const openingChoices = {
     {
       buttonText: '貴重な体験だと思っておくよ',
       branch: [
-        { text: '「ありがとう...優しいんだね」' },
+        {
+          text: '「ありがとう...優しいんだね」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', true);
+          }
+        },
         { text: 'ルカの表情が少し明るくなる。' },
         { text: '「そ、そうかな...」' },
         { text: '女の子の姿で照れるのは、何だか変な感じだ。' },
@@ -378,13 +497,18 @@ export const openingChoices = {
         {
           text: '「う、うん...ごめんね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', false);
+          }
         },
         { text: 'ルカは申し訳なさそうに俯く。' },
         { text: '「別に謝らなくていいって。事故だろ」' },
-        { text: '「でも...」' },
         {
           text: '「でも...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', true);
+          }
         },
         { text: '「明日には戻れるんだし。な？」' },
         { text: '俺がそう言うと、ルカは少しだけ表情を和らげた。' },
@@ -400,6 +524,9 @@ export const openingChoices = {
         {
           text: '「え、大丈夫なの？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', true);
+          }
         },
         { text: '「妹が一人で待ってるし、それに...」' },
         { text: '自分の胸元を軽くつまんで苦笑する。' },
@@ -407,11 +534,17 @@ export const openingChoices = {
         {
           text: '「そっか...うん、確かにそうかも」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: 'ルカは少し残念そうに...いや、心配そうに頷いた。' },
         {
           text: '「気をつけてね？ 変な人に連れて行かれないように！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', true);
+          }
         },
         { text: '「誰が連れて行くかよ」' },
         { text: '二人は鞄を持ち、部室を出た。 ' },
@@ -858,11 +991,17 @@ export const openingChoices = {
         {
           text: '「ほんと！？ ...あ、いや、えっと。うん、その方が安全だよね！ 緊急事態だし！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', true);
+          }
         },
         { text: '「ああ。この姿で家に帰ってひなに会う勇気は、正直ないし...このぶかぶかの服じゃ歩きにくいしな」' },
         {
           text: '「よし、じゃあ行こっか。私の家、こっちだから」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', true);
+          }
         },
         { text: 'ルカが嬉しそうに手招きする。' },
         { text: '俺たちは並んで学校を出た。' },
@@ -872,6 +1011,7 @@ export const openingChoices = {
           speaker: 'ルカ',
           action: async () => {
             changeBackgroundImage('opening', 'city_evening.jpg');
+            changeCharacterImage('ruka', 'base', true);
             await new Promise(resolve => setTimeout(resolve, 1000));
           }
         },
@@ -881,6 +1021,9 @@ export const openingChoices = {
         {
           text: '「うん。ちょっと散らかってるかもだけど」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         {
           text: 'ルカの家の玄関をくぐり、階段を上がった先にある部屋に通される。',
@@ -894,6 +1037,9 @@ export const openingChoices = {
         {
           text: '「とりあえず、その制服じゃ窮屈だよね。着替え、貸してあげる」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', true);
+          }
         },
         { text: 'ルカがタンスをゴソゴソと漁り、薄いピンク色のパジャマを取り出した。' },
         { text: '猫の刺繍が入った可愛らしいものだ。' },
@@ -902,47 +1048,78 @@ export const openingChoices = {
           text: '「だ、だって他にないし！ 私の服だもん」',
           speaker: 'ルカ',
           choiceId: 'd01',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', true);
+          }
         },
         { text: ' 「...ありがとな」' },
         { text: ' 俺はそれを受け取り、ふと立ち尽くす。' },
         {
           text: '「？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'ルカが不思議そうに首を傾げる。' },
         { text: '「いや、着替えるから...その、向こう向いててくれよ」' },
         {
           text: '「あ、そっか...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: 'ルカはきょとんとした後、少し悪戯っぽく笑った。' },
         {
           text: '「もう体は女の子なんだし、気にしなくていいのに」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'doya', true);
+          }
         },
         { text: '「中身は男なんだよ！ 恥じらいを持たせろ！」' },
         {
           text: '「はいはい」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
-        { text: 'ルカが部屋を出ていく。' },
+        {
+          text: 'ルカが部屋を出ていく。',
+          action: async () => {
+            deleteCharacterTatie();
+          }
+        },
         { text: '俺はぶかぶかの制服を脱ぎ、パジャマに袖を通した。' },
         { text: '生地が柔らかく、肌触りがいい。' },
         { text: 'サイズはぴったりだった。' },
         { text: '「着替えたぞ」 ' },
-        { text: 'ルカが部屋に戻ってくる。' },
+        {
+          text: 'ルカが部屋に戻ってくる。',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', true);
+          }
+        },
         { text: 'いつの間にかルカも部屋着に着替えていた。' },
         { text: '少しゆったりとしたTシャツにショートパンツ姿。' },
         { text: '普段の制服姿とは違う無防備な格好に、俺は思わず目を逸らす。' },
         {
           text: '「あ...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: '俺を見て、ルカが小さく声を漏らした。' },
         { text: '「ど、どうした？」' },
         {
           text: '「ううん...似合ってるなって」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
         },
         { text: '「...そうか」' },
         { text: '何だか照れくさくて、俺は視線を逸らした。' },
@@ -950,7 +1127,8 @@ export const openingChoices = {
           text: '「さて、と。もう遅いし、寝よっか」',
           speaker: 'ルカ',
           action: async () => {
-            changeBackgroundImage('opening', 'ruka_room_nighttime_light.jpg');
+            changeBackgroundImage('opening', 'ruka_room_nighttime_light.jpg'); // このままでいい
+            changeCharacterImage('ruka', 'base', true);
             await new Promise(resolve => setTimeout(resolve, 1000));
           }
         },
@@ -961,6 +1139,9 @@ export const openingChoices = {
         {
           text: '「え？ ここだけど」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'ルカが当たり前のようにベッドを指差す。' },
         { text: '俺は冷や汗をかいた。' },
@@ -973,33 +1154,48 @@ export const openingChoices = {
         {
           text: '「ダメ！ お客さんを床で寝かせるわけにはいかないよ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'pout', true);
+          }
         },
         { text: '「でもベッド一つしかないし...」' },
         {
           text: '「それに...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'ルカが少し俯いて、上目遣いに俺を見る。 ' },
         {
           text: '「...今日は、その。私のせいでこんなことになっちゃったし...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', false);
+          }
         },
         { text: 'しおらしい態度でそう言われると、断りづらい。' },
         { text: '「...何もしないなら、いいけど」' },
         {
           text: '「何もしないよ！ 何するつもりなの！？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', true);
+          }
         },
         { text: '「いや、俺がじゃなくて...いや、何でもない」' },
         { text: '結局、俺は折れるしかなかった。' },
         {
           text: '「...電気、消すね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', true);
+          }
         },
         {
           text: '部屋が暗闇に包まれる。',
           action: async () => {
-            changeBackgroundImage('opening', 'ruka_room_nighttime.jpg');
+            changeBackgroundImage('opening', 'ruka_room_nighttime.jpg'); // ここは変える
             await new Promise(resolve => setTimeout(resolve, 1000));
           }
         },
@@ -1009,18 +1205,29 @@ export const openingChoices = {
         {
           text: '「...ねえ、ごめんね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'それは、昼間よりもずっと真剣なトーンだった。' },
         {
           text: '「私が変な実験に付き合わせちゃったから...本当に戻れなかったらどうしようって、怖くて」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', false);
+          }
         },
         { text: 'ルカの声が微かに震えている。' },
         {
           text: '布団の中で、ルカの手が俺のパジャマの袖をぎゅっと掴んだのが分かった。',
           choiceId: 'd03',
         },
-        { text: 'やがて、ルカの寝息が聞こえ始める。' },
+        {
+          text: 'やがて、ルカの寝息が聞こえ始める。',
+          action: async () => {
+            deleteCharacterTatie();
+          }
+        },
         { text: '俺も目を閉じた。' },
         { text: '明日の夜には、きっと元に戻れる。' },
         { text: 'そう信じて――。' },
@@ -1041,7 +1248,12 @@ export const openingChoices = {
             openBackgroundImage();
           }
         },
-        { text: '目を開けると、視界いっぱいにルカの寝顔があった。' },
+        {
+          text: '目を開けると、視界いっぱいにルカの寝顔があった。',
+          action: async () => {
+            changeCharacterImage('ruka', 'sleeping', false);
+          }
+        },
         { text: '「うわっ！？」' },
         { text: '飛び起きようとして、体が動かないことに気づく。' },
         { text: 'ルカが俺の体に腕を回し、抱き枕のようにして眠っていたのだ。' },
@@ -1051,36 +1263,59 @@ export const openingChoices = {
         {
           text: '「...んぅ...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'waking', false);
+          }
         },
         { text: 'ルカが身じろぎをして、ゆっくりと目を開けた。' },
         { text: 'ぼんやりとした瞳が俺を捉える。' },
         {
           text: '「...あ、おはよぉ...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'waking_open', true);
+          }
         },
         { text: '「お、おはよう...」' },
         {
           text: '「...ふわぁ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'waking', false);
+          }
         },
         { text: 'ルカはあくびをして、しばらくしてから今の状況に気づいたらしい。' },
         { text: 'ぱちくりと瞬きをして、自分の腕が俺に回されているのを確認し――' },
         {
           text: '「～～っ！？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'blush_close', true);
+          }
         },
         { text: 'バッと勢いよく飛び退いた。' },
         {
           text: '「ご、ごめん！ 私、寝相悪くて...！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'blush', false);
+          }
         },
         { text: '「い、いや...気にしてない...けど' },
         { text: 'お互いに顔を見合わせ、気まずい沈黙が流れる。' },
         {
           text: '「...あ、朝ごはん！ 作るね！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'blush', true);
+          }
         },
-        { text: 'ルカは逃げるようにベッドから降りていった。' },
+        {
+          text: 'ルカは逃げるようにベッドから降りていった。',
+          action: async () => {
+            deleteCharacterTatie();
+          }
+        },
         { text: 'しばらくして、リビングからトーストの焼けるいい匂いが漂ってきた。' },
         { text: '洗面所で顔を洗い、鏡を見る。' },
         { text: 'そこには寝癖のついた美少女――今の俺が映っていた。' },
@@ -1096,6 +1331,9 @@ export const openingChoices = {
         {
           text: '「簡単なものだけど...どうぞ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: '「ありがとう。いただきます' },
         { text: '二人で食べ始めようとした時、俺のスマホが鳴った。' },
@@ -1104,6 +1342,9 @@ export const openingChoices = {
         {
           text: '「出ないの？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: '「...出るか」' },
         { text: '電話に出ると、すぐにひなの声が響いた。' },
@@ -1125,12 +1366,18 @@ export const openingChoices = {
         {
           text: '「今日、どうする？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'ルカが聞いてくる。' },
         { text: '「どうするって？」' },
         {
           text: '「だって、満月は夜でしょ？ それまで時間あるし」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', true);
+          }
         },
         { text: '俺は少し考える。' },
         { text: '妹のひなは昨日帰らなかったことで怒っていた。' },
@@ -1303,12 +1550,18 @@ export const openingChoices = {
         {
           text: '「ごめんね、これしかなくって...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', false);
+          }
         },
         { text: 'ルカが申し訳なさそうに言う。' },
         { text: '「いや、貸してくれるだけありがたいよ」' },
         {
           text: '「そう言ってくれると助かる...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
       ],
     },
@@ -1318,6 +1571,9 @@ export const openingChoices = {
         {
           text: '「え、そうかな？ 普通だと思うけど...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'ルカは首を傾げる。' },
         { text: '「まあ...仕方ないか」' },
@@ -1337,12 +1593,18 @@ export const openingChoices = {
         {
           text: '「...うん」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', true);
+          }
         },
         { text: 'ルカの声が少し明るくなる。' },
         { text: '「ルカがちゃんと調べてくれたんだろ？ なら信じてる」' },
         {
           text: '「...ありがとう」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: '握られていた袖が、少しだけ強く引かれた気がした。' },
         { text: '暗闇の中、ルカの表情は見えないけれど。' },
@@ -1350,6 +1612,9 @@ export const openingChoices = {
         {
           text: '「...うん。一緒に、ね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', true);
+          }
         },
         { text: 'ルカの声が、いつもより柔らかく聞こえた。' },
       ],
@@ -1357,29 +1622,47 @@ export const openingChoices = {
     {
       buttonText: 'ルカのせいじゃないって',
       branch: [
-        { text: '「でも...」' },
+        {
+          text: '「でも...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', true);
+          }
+        },
         { text: '「俺が付き合うって決めたんだから。それに...」' },
         { text: '少し考えて、俺は続けた。' },
         { text: '「...ルカが一緒に解決しようとしてくれてるから、心強いよ」' },
         {
           text: '「...っ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'blush_close', false);
+          }
         },
         { text: 'ルカが小さく息を呑む音が聞こえた。' },
         {
           text: '「本当に...？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
         },
         { text: '「ああ。一人だったら、もっとパニックになってたと思う」' },
         { text: 'しばらく沈黙が続いた後、ルカがぽつりと呟く。' },
         {
           text: '「...優しいんだね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: '「そうか？」' },
         {
           text: '「うん...だから、絶対に元に戻してみせるから」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', true);
+          }
         },
         { text: 'パジャマの袖を掴む手に、力が込められる。' },
         { text: '「...信じてる」' },
@@ -1506,41 +1789,65 @@ export const openingChoices = {
         {
           text: '「は、はいっ！ 勧誘なら結構です...って」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', true);
+          }
         },
         { text: 'ルカは俺の顔を見て、きょとんとした表情になる。' },
         {
           text: '「えっと...どちら様でしたっけ？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: '「俺だよ、俺。分からないか？」' },
         {
           text: '「え...その口調...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
         },
         { text: 'ルカが目を見開き、俺の周りをぐるぐると回り始める。' },
         {
           text: '「えええっ！？ こんなところで！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'surprised', true);
+          }
         },
         { text: '「な、なんだよ」' },
         {
           text: '「だ、だって！ その格好！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
         },
         { text: 'ルカが俺のワンピース姿を指差して、目を輝かせる。' },
         {
           text: '「すっごく似合ってる！ 儚げな美少女って感じ！」',
           speaker: 'ルカ',
-          choiceId: 'i01'
+          choiceId: 'i01',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', true);
+          }
         },
         {
           text: '「でも、どうしたの？ 家で大人しくしてるんじゃなかったっけ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: '「ひなが心配性でな...息抜きにちょっと散歩だ」' },
         {
           text: '「そっか。ひなちゃん、優しいね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: 'ルカは微笑ましそうに言うと、持っていたトートバッグを持ち直した。' },
         { text: '中から、何やら怪しげな香草の匂いが漂ってくる。' },
@@ -1548,38 +1855,59 @@ export const openingChoices = {
         {
           text: '「え？ ああ、これ？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'ルカはバッグの中身をチラリと見せた。' },
         { text: '大量のロウソク、塩、そして得体の知れない乾燥した草。' },
         {
           text: '「今夜の儀式の準備！ 満月の夜にしか手に入らないアイテムが必要で、隣町の専門店まで行ってたの」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: '「専門店なんてあるのかよ...」' },
         {
           text: '「あるよ！ 『魔術堂』っていう路地裏のお店」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', true);
+          }
         },
         { text: 'ルカは得意げに胸を張る。' },
         {
           text: '「これで準備は万端。絶対に元に戻せるから」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
         },
         { text: 'その言葉に、俺は安堵と同時に、少しだけ申し訳なさを感じた。' },
         { text: '「...悪いな、ルカ。俺のために走り回らせて」' },
         {
           text: '「ううん。私が巻き込んじゃったんだし、これくらい当然だよ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: 'ルカは首を横に振る。' },
         {
           text: '「それに...私の実験のせいでもあるけど...ちょっとだけ楽しいし」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', true);
+          }
         },
         { text: '「楽しいって...」' },
         {
           text: '「あ、いや！ 観察対象として興味深いっていうか！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', true);
+          }
         },
         { text: 'ルカが慌てて誤魔化す。' },
         { text: 'その様子がおかしくて、俺は思わず笑ってしまった。' },
@@ -1587,6 +1915,9 @@ export const openingChoices = {
         {
           text: '「あ、笑った」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: '「笑うだろ、そりゃ」' },
         { text: 'ルカもつられて笑う。' },
@@ -1597,32 +1928,56 @@ export const openingChoices = {
         {
           text: '「...ねえ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'ルカが俺の袖を軽く引く。' },
         {
           text: '「少し、付き合ってくれる？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: '「ん？」' },
         {
           text: '「せっかく会えたしさ、あそこのカフェ行こ？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
         },
-        { text: '二人でカフェに入り、窓際の席に座った。' },
+        {
+          text: '二人でカフェに入り、窓際の席に座った。',
+          action: async () => {
+            changeBackgroundImage('opening', 'kissaten_daytime.jpg');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        },
         { text: 'ルカはミルクティー、俺はアイスコーヒーを注文する。' },
         {
           text: '「...そういえば」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'ルカがカップを両手で包みながら言った。' },
         {
           text: '「女の子になってみて、どう？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', true);
+          }
         },
         { text: '「どうって...」' },
         {
           text: '「大変だった？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: '「まあ...色々とな」' },
         { text: '髪のこと、服のこと、体のこと。' },
@@ -1632,12 +1987,18 @@ export const openingChoices = {
           text: '「でも？」',
           speaker: 'ルカ',
           choiceId: 'i02',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: 'ルカが少し驚いたような顔をする。' },
         { text: '「ひなが優しくしてくれたし、こうやってルカとも話せたし」' },
         {
           text: '「...そっか」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
         },
         { text: 'ルカが嬉しそうに笑う。' },
         { text: 'しばらく他愛のない話をしながら、二人で時間を過ごした。' },
@@ -1645,24 +2006,33 @@ export const openingChoices = {
           text: '気づけば、窓の外の日差しが少しずつ傾き始めている。',
           action: async () => {
             // 後で書く -> fadeなしの切り替えにする
-            changeBackgroundImage('opening', 'city2_evening.jpg');
+            changeBackgroundImage('opening', 'kissaten_evening.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
           }
         },
         {
           text: '「...そろそろ、時間だね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'ルカがスマホを見ながら言った。' },
         {
           text: '「今夜、月が昇るのは8時過ぎ。それまでに準備を整えないと」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: '「...ああ」' },
         {
           text: '「どこで儀式する？ 私の家？ それとも...」',
           speaker: 'ルカ',
           choiceId: 'i03',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
       ],
     }
@@ -1694,6 +2064,9 @@ export const openingChoices = {
         {
           text: '「そりゃそうだよ。心配したんだよ、きっと」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'ルカが苦笑する。' },
       ],
@@ -1736,6 +2109,9 @@ export const openingChoices = {
         {
           text: '「そうだね...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', false);
+          }
         },
         { text: 'ルカが申し訳なさそうに笑った。' },
       ],
@@ -1748,6 +2124,9 @@ export const openingChoices = {
         {
           text: '「よし、なら今日一日は私が責任持ってお世話するから！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'perori', false);
+          }
         },
         { text: 'ルカは胸を張って言う。' },
         { text: '何だか微笑ましくて、俺は小さく笑った。' },
@@ -1755,15 +2134,25 @@ export const openingChoices = {
         {
           text: '「うん、任せて！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', true);
+          }
         },
         { text: 'ルカは嬉しそうに立ち上がった。' },
         {
           text: '「じゃあ、お出かけしよっか！ その格好じゃ外出られないし、私の服貸してあげる！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: '「...マジで外出るのか」' },
-        { text: '「せっかくの休日だもん。部屋に籠ってるのもったいないよ」',
+        {
+          text: '「せっかくの休日だもん。部屋に籠ってるのもったいないよ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
         },
         { text: '確かに、一日中部屋にいても気が滅入るだけかもしれない。' },
         { text: '「わかった。じゃあ、頼むよ」' },
@@ -1773,17 +2162,27 @@ export const openingChoices = {
         {
           text: '「これ、私のお気に入りなんだ。似合うと思うよ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: '「...そうか」' },
         { text: '着替えを終えて鏡を見ると、そこにはごく普通の女子高生が映っていた。' },
         {
           text: '「うん、やっぱり可愛い！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', true);
+          }
         },
         { text: 'ルカが満足そうに頷く。' },
         { text: '「可愛いって言うな...」' },
-        { text: '「でも本当だもん」',
+        {
+          text: '「でも本当だもん」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: '二人で外に出る準備を整え、ルカの家を後にした。' },
         // 8.mdへ
@@ -1792,6 +2191,7 @@ export const openingChoices = {
           speaker: 'ルカ',
           action: async () => {
             changeBackgroundImage('opening', 'city2_daytime.jpg');
+            changeCharacterImage('ruka', 'base_close', false);
             await new Promise(resolve => setTimeout(resolve, 1000));
           }
         },
@@ -1812,12 +2212,18 @@ export const openingChoices = {
         {
           text: '「うん...そろそろ、準備しないとね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: 'ルカが時計を見る。' },
         { text: '「満月は、今夜だもんな」' },
         {
           text: '「...怖い？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: '「まあ...少しは」' },
         { text: '正直に答えた。' },
@@ -1830,12 +2236,18 @@ export const openingChoices = {
         {
           text: '「...！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
         },
         { text: 'ルカが驚いたように目を見開く。' },
         { text: 'そして、すぐに柔らかく微笑んだ。' },
         {
           text: '「うん。一緒に、頑張ろう」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', true);
+          }
         },
         { text: '「ああ」' },
         { text: '二人でベンチを立ち上がる。' },
@@ -1844,6 +2256,9 @@ export const openingChoices = {
         {
           text: '「じゃあ、帰ろっか」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: '「ああ」' },
         { text: '夕焼けの中、二人で歩き出した。' },
@@ -1857,16 +2272,25 @@ export const openingChoices = {
         {
           text: '「うん、分かる。ひなちゃん、心配してるよね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', true);
+          }
         },
         { text: 'ルカが優しく頷く。' },
         {
           text: '「なら、夜は私が家に行こうか？ 道具は全部持って行くから」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: '「いいのか？」' },
         {
           text: '「当たり前だよ。私のせいでこうなったんだし、最後まで責任持つから」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: 'ルカが力強く頷く。' },
         { text: '「ありがとう。じゃあ、準備するよ」' },
@@ -1875,16 +2299,25 @@ export const openingChoices = {
         {
           text: '「うーん...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'ルカが少し考えて、自分のパーカーを手渡してくれた。' },
         {
           text: '「これ着て行けば？ 少しはマシになるかも」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: '「いいのか？」' },
         {
           text: '「うん。夜、返してくれればいいから」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: '「...ありがとう」' },
         { text: 'パーカーを羽織り、フードを被る。' },
@@ -1893,10 +2326,18 @@ export const openingChoices = {
         {
           text: '「気をつけてね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: '「ああ。夜、待ってるから」' },
         { text: 'ルカが手を振る。' },
-        { text: '俺もそれに応えて、ルカの家を後にした。' },
+        {
+          text: '俺もそれに応えて、ルカの家を後にした。',
+          action: async () => {
+            deleteCharacterTatie();
+          }
+        },
         {
           text: '家までの道のりは、思ったより長く感じた。',
           action: async () => {
@@ -2494,6 +2935,9 @@ export const openingChoices = {
         {
           text: '「こんばんは、ひなちゃん」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', true);
+          }
         },
         {
           text: '「こんばんは。お兄ちゃん、ルカさん来たよ」',
@@ -2506,6 +2950,9 @@ export const openingChoices = {
         {
           text: '「準備、始めるね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: 'ルカがバッグから儀式の道具を取り出し始める。' },
         { text: '俺とひなは、その様子をじっと見守っていた。' },
@@ -2584,7 +3031,13 @@ export const openingChoices = {
     {
       buttonText: '...やめてくれ、恥ずかしい',
       branch: [
-        { text: '「あ、照れてる？」' },
+        {
+          text: '「あ、照れてる？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'doya', true);
+          }
+        },
         { text: '「照れてない！」' },
       ],
     }
@@ -2597,11 +3050,14 @@ export const openingChoices = {
   ],
   i03: [
     {
-      buttonText: 'うちでやろう',
+      buttonText: 'ルカの家',
       branch: [
         {
           text: '「分かった。じゃあ、一緒に行こ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: 'ルカが立ち上がる。' },
         { text: '俺も席を立ち、二人で店を出た。' },
@@ -2609,17 +3065,23 @@ export const openingChoices = {
       ],
     },
     {
-      buttonText: 'ルカの家',
+      buttonText: 'うちでやろう',
       branch: [
         { text: '「ひなにも見届けてもらいたい」' },
         {
           text: '「...うん。そうだね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: 'ルカが優しく微笑む。' },
         {
           text: '「じゃあ、準備して向かうね」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: '「ああ。待ってる」' },
         // 9-hina.mdへ
@@ -2634,11 +3096,17 @@ export const openingChoices = {
         {
           text: '「じゃあ...商店街、行こっか！ 美味しいクレープ屋さんがあるの」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', true);
+          }
         },
         { text: '「クレープか...」' },
         {
           text: '「ダメ？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: '「いや、別に」' },
         { text: '二人で並んで歩く。' },
@@ -2646,11 +3114,17 @@ export const openingChoices = {
         {
           text: '「大丈夫？ 慣れない？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', true);
+          }
         },
         { text: '「ああ...慣れないけど、何とか」' },
         {
           text: '「ふふ、可愛いよ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'doya', false);
+          }
         },
         { text: '「だから、可愛いって言うな...」' },
         { text: 'またからかわれた。' },
@@ -2665,12 +3139,18 @@ export const openingChoices = {
         {
           text: '「何にする？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', true);
+          }
         },
         { text: '「えっと...」' },
         { text: 'メニューを見ても、どれがいいのか分からない。' },
         {
           text: '「迷ってるなら、これオススメだよ。イチゴとチョコの」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: '「じゃあ、それで」' },
         { text: '注文を済ませ、二人でベンチに座る。' },
@@ -2679,17 +3159,26 @@ export const openingChoices = {
         {
           text: '「でしょ？ ここ、私の行きつけなの」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', true);
+          }
         },
         { text: 'ルカも嬉しそうにクレープを頬張る。' },
         { text: '少しクリームが口の端についていて、思わず吹き出しそうになった。' },
         {
           text: '「どうしたの？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: '「いや...口、ついてるぞ」' },
         {
           text: '「え？ ...あ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'blush', false);
+          }
         },
         { text: 'ルカは慌ててハンカチで拭う。' },
         { text: 'その仕草がどこか可愛らしくて、俺は視線を逸らした。' },
@@ -2703,6 +3192,9 @@ export const openingChoices = {
         {
           text: '「あ、いいね！ 駅前に大きい書店があるんだ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: 'ルカが嬉しそうに頷く。' },
         { text: '二人で並んで歩く。' },
@@ -2710,11 +3202,17 @@ export const openingChoices = {
         {
           text: '「大丈夫？ 慣れない？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: '「ああ...慣れないけど、何とか」' },
         {
           text: '「ふふ、可愛い」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'doya', false);
+          }
         },
         { text: '「だから、可愛いって言うな...」' },
         {
@@ -2728,40 +3226,66 @@ export const openingChoices = {
         {
           text: '「当たり前でしょ？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', true);
+          }
         },
         { text: 'ルカは楽しそうに本を手に取り始める。' },
         {
-          text: '「ほら、これ見て! 『満月の魔術と儀式』だって!」',
+          text: '「ほら、これ見て！ 『満月の魔術と儀式』だって！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
         },
-        { text: '「...今さらだけど、参考になるのか?」' },
+        { text: '「...今さらだけど、参考になるのか？」' },
         {
           text: '「なるかもよ？ 今夜の儀式のヒントがあるかもしれないし」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: '真剣な顔で本をめくるルカを見て、俺は小さく笑った。' },
         {
           text: '「何？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: '「いや...ルカらしいなって」' },
         {
           text: '「...それ、褒めてる？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'pout', false);
+          }
         },
         { text: '「まあ、そんなとこ」' },
-        { text: 'ルカは少し照れたように笑って、また本に視線を戻した。' },
+        {
+          text: 'ルカは少し照れたように笑って、また本に視線を戻した。',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
+        },
         { text: 'しばらくして、俺も適当に本を手に取る。' },
         { text: '小説のコーナーで何冊か見ていると、ルカが近づいてきた。' },
         {
           text: '「何読んでるの？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: '「いや、特に...」' },
         {
           text: '「ふーん。意外と小説とか読むんだ」',
           speaker: 'ルカ',
           choiceId: 'j02',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
         },
         { text: 'そんな他愛ない会話をしながら、二人で本屋を回った。' },
         { text: 'その後も、ルカに連れられてクレープ屋やゲームセンターを回った。' },
@@ -2774,6 +3298,9 @@ export const openingChoices = {
         {
           text: '「ゲーセン？ いいね、行こっか！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
         },
         { text: 'ルカが元気よく歩き出す。' },
         {
@@ -2787,6 +3314,9 @@ export const openingChoices = {
         {
           text: '「休日だもんね。あ、見て見て！ あれ可愛くない？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', true);
+          }
         },
         { text: 'ルカが指差したのは、クレーンゲーム機の中に積まれた、丸々とした猫のぬいぐるみだった。' },
         { text: 'ルカのパジャマにも猫の刺繍があったし、猫が好きなのだろう。' },
@@ -2794,6 +3324,9 @@ export const openingChoices = {
         {
           text: '「えっ、いいの？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
         },
         { text: '「任せとけって」' },
         { text: '俺は袖をまくり、コインを投入した。' },
@@ -2802,6 +3335,9 @@ export const openingChoices = {
         {
           text: '「あーっ！ 惜しい！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'surprised', false);
+          }
         },
         { text: '「くそっ、もう一回だ！」' },
         { text: '俺はムキになってコインを追加投入する。' },
@@ -2810,18 +3346,27 @@ export const openingChoices = {
         {
           text: '「ぷっ...」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'doya', false);
+          }
         },
         { text: '隣でルカが吹き出す気配がした。' },
         { text: '「わ、笑うなよ！ 次こそは...」' },
         {
           text: '「はいはい、交代。ちょっとどいてみて？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', true);
+          }
         },
         { text: '「え？」' },
         { text: 'ルカが俺の体を押しのけ、操作盤の前に立つ。' },
         {
           text: '「よく見ててね？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: 'ルカは慣れた手つきでレバーを操作し、迷いなくボタンを押した。' },
         { text: 'ウィーン、とアームが動き、絶妙な角度でぬいぐるみのタグと足の隙間に爪を引っ掛ける。' },
@@ -2831,44 +3376,68 @@ export const openingChoices = {
         {
           text: '「はい、取れた！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'perori', false);
+          }
         },
         { text: 'ルカが取り出し口からぬいぐるみを引っ張り出し、ドヤ顔で掲げた。' },
         { text: '「うそだろ...」' },
         {
           text: '「クレーンゲームは得意なのです！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'perori', true);
+          }
         },
         { text: 'ルカは悪戯っぽく舌を出して笑うと、そのぬいぐるみを俺に差し出した。' },
         {
           text: '「ほら」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
         },
         { text: '「え...くれるのか？」' },
         {
           text: '「うん。頑張ってくれたお礼」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
         },
         { text: '「俺、何もしてないけど...」' },
         {
           text: '「気持ちが嬉しかったから、いいの！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'blush', true);
+          }
         },
         { text: 'ルカは強引に俺の胸にぬいぐるみを押し付ける。' },
         {
           text: '「大事にしてね？」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
         },
         { text: '「...ああ、ありがとう」' },
         { text: '俺は複雑な気持ちで、ルカが取ってくれたぬいぐるみを抱きしめた。' },
         {
           text: '「ふふ、似合うよ」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'doya', false);
+          }
         },
         { text: '「うるさい...」' },
         { text: 'ルカの余裕には、どうやっても勝てそうになかった。' },
         {
           text: '「次はこのゲームやろ！」',
           speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', true);
+          }
         },
         { text: '「お、おう...」' },
         { text: 'その後も、ルカに連れられてクレープ屋や本屋を回った。' },

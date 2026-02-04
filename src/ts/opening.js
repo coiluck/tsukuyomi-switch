@@ -19,6 +19,12 @@ document.getElementById("top-button-start").addEventListener("click", () => {
   branchStack = [];
   displayHistory = [];
   deleteCharacterTatie();
+  const choicesContainer = document.getElementById('opening-choices-container');
+  if (choicesContainer) {
+    choicesContainer.innerHTML = '';
+    choicesContainer.style.display = 'none';
+    choicesContainer.style.pointerEvents = 'none';
+  }
   updateStory();
 });
 
