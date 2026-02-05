@@ -10,6 +10,8 @@ interface gameState {
   },
   root: 'DAY 01' | 'DAY 02' | 'Ending' | null;
   LoadImageSrc: string;
+  LastBGM: string;
+  LastCharacter: string;
   savedAt?: string;
 }
 interface SettingsState {
@@ -27,6 +29,8 @@ const initialGameState = {
     displayHistory: [],
   },
   root: null,
+  LastBGM: '',
+  LastCharacter: '',
   LoadImageSrc: './src/assets/images/background/bushitu_daytime.jpg',
 };
 

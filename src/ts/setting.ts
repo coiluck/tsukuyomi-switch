@@ -1,6 +1,7 @@
 // setting.js
 import { changeModal, closeModal } from './modules/changeModal.js';
 import { globalSettingState, saveSettingsData } from './modules/gameState';
+import { bgm, se } from './modules/music';
 
 export function initSetting() {
   // Close Button
@@ -19,6 +20,7 @@ export function initSetting() {
     (value) => {
       globalSettingState.bgmVolume = value;
       saveSettingsData();
+      bgm.setVolume(value / 6);
     }
   );
   setupRadioGroup(
@@ -58,6 +60,14 @@ function setupRadioGroup(name: string, currentValue: number, onUpdate: (val: num
       }
     });
   });
+  switch (name) {
+    case 'bgm-volume':
+      bgm.setVolume(currentValue / 6);
+      break;
+    case 'se-volume':
+      se.setVolume(currentValue / 6);
+      break;
+  }
 }
 
 import { getCurrentWindow, LogicalSize } from '@tauri-apps/api/window';
