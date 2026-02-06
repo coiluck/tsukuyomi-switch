@@ -1,6 +1,7 @@
 // scenarioAction.js
 import { showModal, closeModal } from "./changeModal.js";
 import { globalGameState } from './gameState';
+import { se } from './music';
 
 export async function nextDay(nextDay, backgroundImage, clickTextColor = 'white') {
   // セットアップ処理
@@ -27,7 +28,9 @@ export async function nextDay(nextDay, backgroundImage, clickTextColor = 'white'
   showModal('day');
 
   // DAY更新アニメーション
-  await new Promise(resolve => setTimeout(resolve, 750));
+  await new Promise(resolve => setTimeout(resolve, 500));
+  se.play('day');
+  await new Promise(resolve => setTimeout(resolve, 250));
   switch (nextDay) {
     case 1:
       document.querySelector('#modal-day .day-container').classList.add('day1Animate');

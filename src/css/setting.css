@@ -267,6 +267,7 @@
   border: none;
   border-radius: calc(10px + 1rem);;
   cursor: pointer;
+  outline: none;
 }
 .setting-button-item.selected {
   color: rgb(253, 238, 213);

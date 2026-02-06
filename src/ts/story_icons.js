@@ -1,5 +1,6 @@
 // story_icons.js
 import { changeModal, showModal, closeModal } from './modules/changeModal.js';
+import { bgm, se } from './modules/music';
 
 document.getElementById('opening-icon-save').addEventListener('click', (event) => {
   event.stopPropagation();
@@ -36,4 +37,5 @@ document.getElementById('menu-item-setting').addEventListener('click', () => {
 document.getElementById('menu-item-return-title').addEventListener('click', () => {
   closeModal('menu');
   changeModal('top');
+  bgm.fadeOut();
 });

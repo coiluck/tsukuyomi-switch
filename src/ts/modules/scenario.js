@@ -3,6 +3,7 @@ import { nextDay, MoveBackgroundImage, shakeBackgroundImage, openBackgroundImage
 import { changeBackgroundImage, changeBackgroundImageWithCrossFade, changeBackgroundImageWithoutFade } from './scenarioAction.js';
 import { globalGameState } from './gameState';
 import { changeCharacterImage, changeCharacterImageWithoutFace, deleteCharacterTatie } from './character';
+import { bgm, se } from './music';
 
 export const openingScenario = [
   {
@@ -17,6 +18,7 @@ export const openingScenario = [
     speaker: 'ルカ',
     action: async () => {
       changeCharacterImage('ruka', 'base_open', true);
+      await bgm.play('oyatunoatohanamukunaru');
     }
   },
   { text: 'ここはオカルト部の部室。部員は俺たち二人だけだ。' },
@@ -109,7 +111,12 @@ export const openingScenario = [
       changeCharacterImage('ruka', 'base_open', true);
     }
   },
-  { text: 'ルカが本を開き、何やら呪文のようなものを読み始める。' },
+  {
+    text: 'ルカが本を開き、何やら呪文のようなものを読み始める。',
+    action: async () => {
+      bgm.play('kaikoroku');
+    }
+  },
   { text: '普段のぼんやりした様子とは違い、妙に真剣な横顔だ。' },
   {
     text: '「――汝、理（ことわり）を違え、境界を越えん」',
@@ -161,8 +168,10 @@ export const openingScenario = [
   },
   {
     text: '「っ...！」',
-    // flash.mp3を再生する
-    // 後で書く
+    action: async () => {
+      bgm.fadeOut();
+      se.play('flash');
+    }
   },
   {
     text: '目を開けていられないほどに眩しい光が部屋中を包み込んだ。',
@@ -198,6 +207,9 @@ export const openingScenario = [
   {
     text: '高い。明らかに、さっきまでの自分の声じゃない。',
     choiceId: 'b01',
+    action: async () => {
+      bgm.play('ohirusugi');
+    }
   },
   { text: '慌てて自分の体を見下ろす。' },
   { text: '「...嘘だろ」' },
@@ -322,7 +334,7 @@ export const openingScenario = [
   {
     text: '窓の外を見ると、空が茜色に染まり始めていた。',
     action: async () => {
-      changeBackgroundImage('opening', 'bushitu_evening.jpg');
+      changeBackgroundImageWithCrossFade('bushitu_evening.jpg');
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
   },
@@ -557,6 +569,7 @@ export const openingChoices = {
           action: async () => {
             changeBackgroundImage('opening', 'entrance_evening.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
+            se.play('door');
           }
         },
         { text: '恐る恐る玄関の扉を開ける。' },
@@ -647,6 +660,7 @@ export const openingChoices = {
           speaker: 'ひな',
           action: async () => {
             changeCharacterImage('hina', 'nomal', false);
+            bgm.play('hokkorihitotoki');
           }
         },
         { text: '「情けないって言うな」' },
@@ -816,6 +830,7 @@ export const openingChoices = {
           speaker: 'ひな',
           action: async () => {
             changeCharacterImage('hina', 'nomal', false);
+            bgm.play('oyasumi');
           }
         },
         { text: '不意に、ひながそう聞いてきた。' },
@@ -940,13 +955,19 @@ export const openingChoices = {
         {
           text: '朝、カーテンの隙間から差し込む光で、俺は目を覚ました。',
           action: async () => {
+            bgm.fadeOut(500);
             nextDay(2, 'city_nighttime.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
             changeBackgroundImage('opening', 'room_daytime.jpg');
             globalGameState.root = 'DAY 02';
           }
         },
-        { text: '「...ん」' },
+        {
+          text: '「...ん」',
+          action: async () => {
+            bgm.play('oyatunoatohanamukunaru');
+          }
+        },
         { text: '寝ぼけた頭で体を起こす。' },
         { text: '顔にかかる長い髪が、昨日の出来事が夢じゃなかったことを思い出させた。' },
         { text: '「...はぁ」' },
@@ -1018,7 +1039,12 @@ export const openingChoices = {
         },
         { text: 'ルカが立ち止まったのは、白い壁の二階建ての一軒家。' },
         { text: '玄関には小さな表札が掛かっている。' },
-        { text: '「お邪魔します...」' },
+        {
+          text: '「お邪魔します...」',
+          action: async () => {
+            se.play('door');
+          }
+        },
         {
           text: '「うん。ちょっと散らかってるかもだけど」',
           speaker: 'ルカ',
@@ -1031,6 +1057,7 @@ export const openingChoices = {
           action: async () => {
             changeBackgroundImage('opening', 'ruka_room_evening.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
+            bgm.play('hokkorihitotoki');
           }
         },
         { text: 'ルカの部屋は、想像通りというか何というか...本棚にはオカルト雑誌や魔道書の類がぎっしりと詰まっていた。' },
@@ -1198,6 +1225,7 @@ export const openingChoices = {
           action: async () => {
             changeBackgroundImageWithCrossFade('ruka_room_nighttime.jpg'); // ここは変える
             await new Promise(resolve => setTimeout(resolve, 1000));
+            bgm.play('oyasumi');
           }
         },
         { text: '俺たちは一つのベッドに並んで横になった。' },
@@ -1235,6 +1263,7 @@ export const openingChoices = {
         {
           text: '翌朝。顔に当たる柔らかい日差しと、何かの重みで目が覚めた。',
           action: async () => {
+            bgm.fadeOut();
             nextDay(2, 'bushitu_nighttime.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
             changeBackgroundImage('opening', 'white.png');
@@ -1245,9 +1274,9 @@ export const openingChoices = {
         {
           text: '「ん...」',
           action: async () => {
-            // あとでfadeなしの切り替えにする
             changeBackgroundImageWithoutFade('ruka_room_daytime.jpg');
             openBackgroundImage();
+            bgm.play('oyatunoatohanamukunaru');
           }
         },
         {
@@ -1768,6 +1797,7 @@ export const openingChoices = {
           text: '軽く手を振って、俺は家を出た。',
           action: async () => {
             deleteCharacterTatie();
+            bgm.fadeOut();
           }
         },
         // 7.mdへ
@@ -1777,6 +1807,7 @@ export const openingChoices = {
           action: async () => {
             changeBackgroundImage('opening', 'city2_daytime.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
+            bgm.play('Nigiwau_machi');
           }
         },
         { text: '外の空気は澄んでいて気持ちいいが、今の俺には別の緊張感がある。' },
@@ -1955,6 +1986,7 @@ export const openingChoices = {
           action: async () => {
             changeBackgroundImage('opening', 'kissaten_daytime.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
+            bgm.play('hokkorihitotoki');
           }
         },
         { text: 'ルカはミルクティー、俺はアイスコーヒーを注文する。' },
@@ -2185,7 +2217,12 @@ export const openingChoices = {
             changeCharacterImage('ruka', 'base', false);
           }
         },
-        { text: '二人で外に出る準備を整え、ルカの家を後にした。' },
+        {
+          text: '二人で外に出る準備を整え、ルカの家を後にした。',
+          action: async () => {
+            bgm.fadeOut();
+          }
+        },
         // 8.mdへ
         {
           text: '「どこ行く？」',
@@ -2194,6 +2231,7 @@ export const openingChoices = {
             changeBackgroundImage('opening', 'city2_daytime.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
             changeCharacterImage('ruka', 'base_close', false);
+            bgm.play('Nigiwau_machi');
           }
         },
         {
@@ -2206,6 +2244,7 @@ export const openingChoices = {
           action: async () => {
             changeBackgroundImage('opening', 'park_evening.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
+            bgm.play('hokkorihitotoki');
           }
         },
         { text: '「もう夕方か...」' },
@@ -2349,7 +2388,12 @@ export const openingChoices = {
         { text: 'この格好で歩くのは、やはり落ち着かない。' },
         { text: '途中、何人かとすれ違ったが、幸い誰も気に留める様子はなかった。' },
         // 5.mdへ
-        { text: '家の前まで来ると、玄関のドアが開いた。' },
+        {
+          text: '家の前まで来ると、玄関のドアが開いた。',
+          action: async () => {
+            se.play('door');
+          }
+        },
         {
           text: '「お兄ちゃん！」',
           speaker: 'ひな',
@@ -2407,6 +2451,7 @@ export const openingChoices = {
             changeBackgroundImage('opening', 'living_daytime.jpg');
             deleteCharacterTatie();
             await new Promise(resolve => setTimeout(resolve, 1000));
+            bgm.play('hokkorihitotoki');
           }
         },
         { text: 'ひなは何度も俺の顔を凝視しては、信じられないという顔をしている。' },
