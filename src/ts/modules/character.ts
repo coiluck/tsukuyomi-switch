@@ -1,7 +1,7 @@
 // character.ts
 export async function changeCharacterImage(character: 'ruka' | 'hina', fileName: string, isActive: boolean) {
   const characterImageContainer = document.getElementById('opening-character-container') as HTMLElement;
-  const currentCharacterImage = document.querySelector(`#opening-character-container img`) as HTMLImageElement;
+  const oldImages = document.querySelectorAll('#opening-character-container img') as NodeListOf<HTMLImageElement>;
 
   const tatieSrc = `/src/assets/images/characters/${character}/full/${fileName}.png`;
   const faceSrc = `/src/assets/images/characters/${character}/face/${fileName}.png`;
@@ -16,17 +16,19 @@ export async function changeCharacterImage(character: 'ruka' | 'hina', fileName:
 
       requestAnimationFrame(() => {
         // 古いやつ
-        if (currentCharacterImage) {
-          currentCharacterImage.classList.remove("active");
-          currentCharacterImage.classList.remove("fade-in");
-          if (isActive) {
-            currentCharacterImage.classList.add("active");
-          } else {
-            currentCharacterImage.classList.add("fade-out");
-          }
-          setTimeout(() => {
-            currentCharacterImage.remove();
-          }, 500);
+        if (oldImages.length > 0) {
+          oldImages.forEach((oldImage) => {
+            oldImage.classList.remove("active");
+            oldImage.classList.remove("fade-in");
+            if (isActive) {
+              oldImage.classList.add("active");
+            } else {
+              oldImage.classList.add("fade-out");
+            }
+            setTimeout(() => {
+              oldImage.remove();
+            }, 500);
+          });
         }
         // 新しいやつ
         if (isActive) {
