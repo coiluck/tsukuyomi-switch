@@ -162,7 +162,6 @@ function displayChoices(choiceId) {
     button.textContent = choice.buttonText;
     button.addEventListener('click', (event) => {
       event.stopPropagation();
-      se.play("button_game");
       isDisplayingSelection = false;
       document.getElementById('opening-choices-container').innerHTML = '';
 
@@ -205,9 +204,11 @@ import { showConfirmWindow } from './modules/message';
 document.getElementById('opening-icon-prev-text').addEventListener('click', (event) => {
   event.stopPropagation();
   // 履歴が2未満(現在の + 戻る先)は戻れない
-  if (isDisplayingSelection || isUpdating || displayHistory.length < 2) {
+  if (isDisplayingSelection || displayHistory.length < 2) {
     showConfirmWindow('選択肢より前には戻れません', false, {});
     se.play("disable");
+    return;
+  } else if (isUpdating) {
     return;
   }
   isUpdating = true;

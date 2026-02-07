@@ -813,7 +813,7 @@ export const openingChoices = {
             changeCharacterImage('hina', 'nomal_close', true);
           }
         },
-        { text: '「...何する気だ?」' },
+        { text: '「...何する気だ？」' },
         {
           text: '「髪、乾かしてあげるの。そのままじゃ風邪ひくでしょ」',
           speaker: 'ひな',
@@ -2303,6 +2303,178 @@ export const openingChoices = {
         { text: '「ああ」' },
         { text: '夕焼けの中、二人で歩き出した。' },
         // 9-ruka.mdへ
+        {
+          text: '夜。既に外は暗くなっていた。',
+          action: async () => {
+            bgm.fadeOut(500);
+            nextDay(3, 'city2_nighttime.jpg');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            deleteCharacterTatie();
+            changeBackgroundImage('opening', 'ruka_room_nighttime_light.jpg');
+            globalGameState.root = 'Ending';
+          }
+        },
+        {
+          text: '窓の外を見上げれば、満月が煌々と輝いている。',
+          action: async () => {
+            bgm.play('hokkorihitotoki');
+          }
+        },
+        {
+          text: '「...綺麗な月だね」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
+        },
+        { text: 'ルカが呟く。' },
+        { text: '「ああ」' },
+        { text: 'ルカの部屋では、既に儀式の準備が整えられていた。' },
+        { text: '床には、あの日と同じような魔法陣が描かれている。' },
+        { text: 'ただ、今回は文様が左右対称に反転していた。' },
+        {
+          text: '「逆儀式だから...魔法陣も反転させたの」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
+        },
+        { text: 'ルカが説明する。' },
+        { text: '「そういうものなのか」' },
+        {
+          text: '「多分...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', false);
+          }
+        },
+        { text: '不安そうなルカの表情に、俺も緊張が高まる。' },
+        {
+          text: '「じゃあ...始めよう」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+            bgm.play('kaikoroku');
+          }
+        },
+        { text: 'ルカが魔道書を手に取る。' },
+        { text: '俺は魔法陣の中央に立った。' },
+        { text: '足元に描かれた複雑な文様が、月明かりに照らされて浮かび上がる。' },
+        {
+          text: '「準備はいい？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
+        },
+        { text: '「ああ」' },
+        { text: 'ルカが深呼吸をして、本のページを開く。' },
+        { text: 'そして、静かに詠唱を始めた。' },
+        {
+          text: '「――月よ、時の理を司る者よ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: '低く、真剣な声。' },
+        { text: 'いつもの軽薄な雰囲気とは全く違う。' },
+        {
+          text: '「――違えし境界を、再び正せ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', true);
+          }
+        },
+        { text: '風が吹く。' },
+        { text: '窓が開いているわけでもないのに、カーテンが揺れた。' },
+        {
+          text: '「――満ちし光の下、失いし形を取り戻さん」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', true);
+          }
+        },
+        { text: '足元の魔法陣が、ゆっくりと光り始める。' },
+        {
+          text: '「大丈夫...続けるね」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
+        },
+        { text: 'ルカの声が少し震えている。' },
+        { text: 'でも、詠唱は止まらない。' },
+        { text: '光が徐々に強くなっていく。' },
+        { text: 'あの日と同じように。' },
+        {
+          text: '「――汝、違えし理を戻し、境界を閉ざさん！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: 'ルカが最後の一節を読み上げる。' },
+        { text: 'その瞬間――' },
+        { text: '魔法陣が、一気に輝きを増した。' },
+        { text: '「うっ...！」' },
+        { text: '眩しさに目を細める。' },
+        { text: '体が、光に包まれていく感覚。' },
+        {
+          text: '「――今、解き放て！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: 'ルカの声が響く。' },
+        { text: '光が、さらに強くなる。' },
+        { text: '体が浮き上がるような感覚。' },
+        { text: '心臓が早鐘を打つ。' },
+        { text: 'これで...終わるのか。' },
+        { text: '元に戻れるのか。' },
+        { text: 'それとも――' },
+        { text: '「...っ！」' },
+        { text: '光が、ピークに達する。' },
+        {
+          text: '俺は目を閉じた。',
+          action: async () => {
+            bgm.fadeOut(500);
+            se.play('flash');
+            changeBackgroundImage('opening', 'white.png');
+            deleteCharacterTatie();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        },
+        { text: '体が、何かに包まれているような感覚。' },
+        { text: '温かくて、優しい光。' },
+        { text: 'どれくらい時間が経ったのだろう。' },
+        { text: '光が、ゆっくりと収まっていく。' },
+        { text: '「...」' },
+        {
+          text: '恐る恐る、目を開ける。',
+          action: async () => {
+            changeBackgroundImage('opening', 'ruka_room_nighttime_light.jpg');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        },
+        { text: '視界がゆっくりとクリアになっていく。' },
+        { text: '「...あ」' },
+        { text: '目の前には、心配そうな顔をしたルカがいた。' },
+        {
+          text: '「...大丈夫？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
+        },
+        { text: 'ルカの声が聞こえる。' },
+        { text: '「ああ...」' },
+        { text: '俺は自分の声を確認する。' },
+        {
+          text: 'そして――',
+          choiceId: 'l01',
+        },
       ],
     },
     {
@@ -3003,6 +3175,214 @@ export const openingChoices = {
         { text: 'ルカがバッグから儀式の道具を取り出し始める。' },
         { text: '俺とひなは、その様子をじっと見守っていた。' },
         // 9-hina.mdへ
+        {
+          text: '夜。既に外は暗くなっていた。',
+          action: async () => {
+            bgm.fadeOut(500);
+            nextDay(3, 'city2_nighttime.jpg');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            deleteCharacterTatie();
+            changeBackgroundImage('opening', 'living_nighttime_light.jpg');
+            globalGameState.root = 'Ending';
+          }
+        },
+        {
+          text: '窓の外を見上げれば、満月が煌々と輝いている。',
+          action: async () => {
+            bgm.play('hokkorihitotoki');
+          }
+        },
+        {
+          text: '「...綺麗な月だね」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
+        },
+        { text: 'リビングの窓から月を眺めていたひなが呟く。' },
+        { text: '「ああ」' },
+        { text: 'リビングでは、既に儀式の準備が整えられていた。' },
+        { text: '床には、あの日と同じような魔法陣が描かれている。' },
+        { text: 'ただ、今回は文様が左右対称に反転していた。' },
+        {
+          text: '「逆儀式だから...魔法陣も反転させたの」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
+        },
+        { text: 'ルカが説明する。' },
+        { text: '「そういうものなのか」' },
+        {
+          text: '「多分...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', false);
+          }
+        },
+        { text: '不安そうなルカの表情に、俺も緊張が高まる。' },
+        {
+          text: '「ねえ、本当に大丈夫なの？」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', false);
+          }
+        },
+        { text: 'ひなが心配そうに俺を見る。' },
+        { text: '「大丈夫だよ。ルカを信じてる」' },
+        {
+          text: '「...そう」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
+        },
+        { text: 'ひなは少し不安そうだが、それ以上は何も言わなかった。' },
+        {
+          text: '「じゃあ...始めよう」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+            bgm.play('kaikoroku');
+          }
+        },
+        { text: 'ルカが魔道書を手に取る。' },
+        { text: '俺は魔法陣の中央に立った。' },
+        { text: '足元に描かれた複雑な文様が、月明かりに照らされて浮かび上がる。' },
+        {
+          text: '「準備はいい？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
+        },
+        { text: '「ああ」' },
+        { text: 'ルカが深呼吸をして、本のページを開く。' },
+        { text: '横では、ひなが固唾を呑んで見守っている。' },
+        { text: 'そして、ルカが静かに詠唱を始めた。' },
+        {
+          text: '「――月よ、時の理を司る者よ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: '低く、真剣な声。' },
+        { text: 'いつもの軽薄な雰囲気とは全く違う。' },
+        {
+          text: '「――違えし境界を、再び正せ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', true);
+          }
+        },
+        { text: '風が吹く。' },
+        { text: '窓が開いているわけでもないのに、カーテンが揺れた。' },
+        { text: 'ひなが小さく息を呑む音が聞こえた。' },
+        {
+          text: '「――満ちし光の下、失いし形を取り戻さん」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', true);
+          }
+        },
+        { text: '足元の魔法陣が、ゆっくりと光り始める。' },
+        {
+          text: '「...お兄ちゃん」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
+        },
+        { text: 'ひなが小さく呟く。' },
+        { text: '俺は彼女に向かって、小さく頷いた。' },
+        { text: '大丈夫。きっと大丈夫だ。' },
+        { text: '光が徐々に強くなっていく。' },
+        { text: 'あの日と同じように。' },
+        {
+          text: '「――汝、違えし理を戻し、境界を閉ざさん！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: 'ルカが最後の一節を読み上げる。' },
+        { text: 'その瞬間――' },
+        { text: '魔法陣が、一気に輝きを増した。' },
+        { text: '「うっ...！」' },
+        { text: '眩しさに目を細める。' },
+        { text: '体が、光に包まれていく感覚。' },
+        {
+          text: '「お兄ちゃん！」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', false);
+          }
+        },
+        { text: 'ひなの声が聞こえる。' },
+        {
+          text: '「――今、解き放て！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: 'ルカの声が響く。' },
+        { text: '光が、さらに強くなる。' },
+        { text: '体が浮き上がるような感覚。' },
+        { text: '心臓が早鐘を打つ。' },
+        { text: 'これで...終わるのか。' },
+        { text: '元に戻れるのか。' },
+        { text: 'それとも――' },
+        { text: '「...っ！」' },
+        { text: '光が、ピークに達する。' },
+        {
+          text: '俺は目を閉じた。',
+          action: async () => {
+            bgm.fadeOut(500);
+            se.play('flash');
+            changeBackgroundImage('opening', 'white.png');
+            deleteCharacterTatie();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        },
+        { text: '体が、何かに包まれているような感覚。' },
+        { text: '温かくて、優しい光。' },
+        { text: 'どれくらい時間が経ったのだろう。' },
+        { text: '光が、ゆっくりと収まっていく。' },
+        { text: '「...」' },
+        {
+          text: '恐る恐る、目を開ける。',
+          action: async () => {
+            changeBackgroundImage('opening', 'living_nighttime_light.jpg');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        },
+        { text: '視界がゆっくりとクリアになっていく。' },
+        { text: '「...あ」' },
+        { text: '目の前には、心配そうな顔をしたルカと、ひながいた。' },
+        {
+          text: '「...大丈夫？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
+        },
+        { text: 'ルカの声が聞こえる。' },
+        {
+          text: '「お兄ちゃん...！」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', false);
+          }
+        },
+        { text: 'ひなが駆け寄ってくる。' },
+        { text: '「ああ...」' },
+        { text: '俺は自分の声を確認する。' },
+        {
+          text: 'そして――',
+          choiceId: 'k01',
+        },
       ],
     },
   ],
@@ -3108,6 +3488,178 @@ export const openingChoices = {
         { text: 'ルカが立ち上がる。' },
         { text: '俺も席を立ち、二人で店を出た。' },
         // 9-ruka.mdへ
+        {
+          text: '夜。既に外は暗くなっていた。',
+          action: async () => {
+            bgm.fadeOut(500);
+            nextDay(3, 'city2_nighttime.jpg');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            deleteCharacterTatie();
+            changeBackgroundImage('opening', 'ruka_room_nighttime_light.jpg');
+            globalGameState.root = 'Ending';
+          }
+        },
+        {
+          text: '窓の外を見上げれば、満月が煌々と輝いている。',
+          action: async () => {
+            bgm.play('hokkorihitotoki');
+          }
+        },
+        {
+          text: '「...綺麗な月だね」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
+        },
+        { text: 'ルカが呟く。' },
+        { text: '「ああ」' },
+        { text: 'ルカの部屋では、既に儀式の準備が整えられていた。' },
+        { text: '床には、あの日と同じような魔法陣が描かれている。' },
+        { text: 'ただ、今回は文様が左右対称に反転していた。' },
+        {
+          text: '「逆儀式だから...魔法陣も反転させたの」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
+        },
+        { text: 'ルカが説明する。' },
+        { text: '「そういうものなのか」' },
+        {
+          text: '「多分...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', false);
+          }
+        },
+        { text: '不安そうなルカの表情に、俺も緊張が高まる。' },
+        {
+          text: '「じゃあ...始めよう」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+            bgm.play('kaikoroku');
+          }
+        },
+        { text: 'ルカが魔道書を手に取る。' },
+        { text: '俺は魔法陣の中央に立った。' },
+        { text: '足元に描かれた複雑な文様が、月明かりに照らされて浮かび上がる。' },
+        {
+          text: '「準備はいい？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
+        },
+        { text: '「ああ」' },
+        { text: 'ルカが深呼吸をして、本のページを開く。' },
+        { text: 'そして、静かに詠唱を始めた。' },
+        {
+          text: '「――月よ、時の理を司る者よ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: '低く、真剣な声。' },
+        { text: 'いつもの軽薄な雰囲気とは全く違う。' },
+        {
+          text: '「――違えし境界を、再び正せ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', true);
+          }
+        },
+        { text: '風が吹く。' },
+        { text: '窓が開いているわけでもないのに、カーテンが揺れた。' },
+        {
+          text: '「――満ちし光の下、失いし形を取り戻さん」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', true);
+          }
+        },
+        { text: '足元の魔法陣が、ゆっくりと光り始める。' },
+        {
+          text: '「大丈夫...続けるね」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
+        },
+        { text: 'ルカの声が少し震えている。' },
+        { text: 'でも、詠唱は止まらない。' },
+        { text: '光が徐々に強くなっていく。' },
+        { text: 'あの日と同じように。' },
+        {
+          text: '「――汝、違えし理を戻し、境界を閉ざさん！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: 'ルカが最後の一節を読み上げる。' },
+        { text: 'その瞬間――' },
+        { text: '魔法陣が、一気に輝きを増した。' },
+        { text: '「うっ...！」' },
+        { text: '眩しさに目を細める。' },
+        { text: '体が、光に包まれていく感覚。' },
+        {
+          text: '「――今、解き放て！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: 'ルカの声が響く。' },
+        { text: '光が、さらに強くなる。' },
+        { text: '体が浮き上がるような感覚。' },
+        { text: '心臓が早鐘を打つ。' },
+        { text: 'これで...終わるのか。' },
+        { text: '元に戻れるのか。' },
+        { text: 'それとも――' },
+        { text: '「...っ！」' },
+        { text: '光が、ピークに達する。' },
+        {
+          text: '俺は目を閉じた。',
+          action: async () => {
+            bgm.fadeOut(500);
+            se.play('flash');
+            changeBackgroundImage('opening', 'white.png');
+            deleteCharacterTatie();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        },
+        { text: '体が、何かに包まれているような感覚。' },
+        { text: '温かくて、優しい光。' },
+        { text: 'どれくらい時間が経ったのだろう。' },
+        { text: '光が、ゆっくりと収まっていく。' },
+        { text: '「...」' },
+        {
+          text: '恐る恐る、目を開ける。',
+          action: async () => {
+            changeBackgroundImage('opening', 'ruka_room_nighttime_light.jpg');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        },
+        { text: '視界がゆっくりとクリアになっていく。' },
+        { text: '「...あ」' },
+        { text: '目の前には、心配そうな顔をしたルカがいた。' },
+        {
+          text: '「...大丈夫？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
+        },
+        { text: 'ルカの声が聞こえる。' },
+        { text: '「ああ...」' },
+        { text: '俺は自分の声を確認する。' },
+        {
+          text: 'そして――',
+          choiceId: 'l01',
+        },
       ],
     },
     {
@@ -3131,6 +3683,214 @@ export const openingChoices = {
         },
         { text: '「ああ。待ってる」' },
         // 9-hina.mdへ
+        {
+          text: '夜。既に外は暗くなっていた。',
+          action: async () => {
+            bgm.fadeOut(500);
+            nextDay(3, 'kissaten_nighttime.jpg');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            deleteCharacterTatie();
+            changeBackgroundImage('opening', 'living_nighttime_light.jpg');
+            globalGameState.root = 'Ending';
+          }
+        },
+        {
+          text: '窓の外を見上げれば、満月が煌々と輝いている。',
+          action: async () => {
+            bgm.play('hokkorihitotoki');
+          }
+        },
+        {
+          text: '「...綺麗な月だね」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
+        },
+        { text: 'リビングの窓から月を眺めていたひなが呟く。' },
+        { text: '「ああ」' },
+        { text: 'リビングでは、既に儀式の準備が整えられていた。' },
+        { text: '床には、あの日と同じような魔法陣が描かれている。' },
+        { text: 'ただ、今回は文様が左右対称に反転していた。' },
+        {
+          text: '「逆儀式だから...魔法陣も反転させたの」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
+        },
+        { text: 'ルカが説明する。' },
+        { text: '「そういうものなのか」' },
+        {
+          text: '「多分...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', false);
+          }
+        },
+        { text: '不安そうなルカの表情に、俺も緊張が高まる。' },
+        {
+          text: '「ねえ、本当に大丈夫なの？」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', false);
+          }
+        },
+        { text: 'ひなが心配そうに俺を見る。' },
+        { text: '「大丈夫だよ。ルカを信じてる」' },
+        {
+          text: '「...そう」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
+        },
+        { text: 'ひなは少し不安そうだが、それ以上は何も言わなかった。' },
+        {
+          text: '「じゃあ...始めよう」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+            bgm.play('kaikoroku');
+          }
+        },
+        { text: 'ルカが魔道書を手に取る。' },
+        { text: '俺は魔法陣の中央に立った。' },
+        { text: '足元に描かれた複雑な文様が、月明かりに照らされて浮かび上がる。' },
+        {
+          text: '「準備はいい？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
+        },
+        { text: '「ああ」' },
+        { text: 'ルカが深呼吸をして、本のページを開く。' },
+        { text: '横では、ひなが固唾を呑んで見守っている。' },
+        { text: 'そして、ルカが静かに詠唱を始めた。' },
+        {
+          text: '「――月よ、時の理を司る者よ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: '低く、真剣な声。' },
+        { text: 'いつもの軽薄な雰囲気とは全く違う。' },
+        {
+          text: '「――違えし境界を、再び正せ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', true);
+          }
+        },
+        { text: '風が吹く。' },
+        { text: '窓が開いているわけでもないのに、カーテンが揺れた。' },
+        { text: 'ひなが小さく息を呑む音が聞こえた。' },
+        {
+          text: '「――満ちし光の下、失いし形を取り戻さん」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', true);
+          }
+        },
+        { text: '足元の魔法陣が、ゆっくりと光り始める。' },
+        {
+          text: '「...お兄ちゃん」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
+        },
+        { text: 'ひなが小さく呟く。' },
+        { text: '俺は彼女に向かって、小さく頷いた。' },
+        { text: '大丈夫。きっと大丈夫だ。' },
+        { text: '光が徐々に強くなっていく。' },
+        { text: 'あの日と同じように。' },
+        {
+          text: '「――汝、違えし理を戻し、境界を閉ざさん！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: 'ルカが最後の一節を読み上げる。' },
+        { text: 'その瞬間――' },
+        { text: '魔法陣が、一気に輝きを増した。' },
+        { text: '「うっ...！」' },
+        { text: '眩しさに目を細める。' },
+        { text: '体が、光に包まれていく感覚。' },
+        {
+          text: '「お兄ちゃん！」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', false);
+          }
+        },
+        { text: 'ひなの声が聞こえる。' },
+        {
+          text: '「――今、解き放て！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'serious', false);
+          }
+        },
+        { text: 'ルカの声が響く。' },
+        { text: '光が、さらに強くなる。' },
+        { text: '体が浮き上がるような感覚。' },
+        { text: '心臓が早鐘を打つ。' },
+        { text: 'これで...終わるのか。' },
+        { text: '元に戻れるのか。' },
+        { text: 'それとも――' },
+        { text: '「...っ！」' },
+        { text: '光が、ピークに達する。' },
+        {
+          text: '俺は目を閉じた。',
+          action: async () => {
+            bgm.fadeOut(500);
+            se.play('flash');
+            changeBackgroundImage('opening', 'white.png');
+            deleteCharacterTatie();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        },
+        { text: '体が、何かに包まれているような感覚。' },
+        { text: '温かくて、優しい光。' },
+        { text: 'どれくらい時間が経ったのだろう。' },
+        { text: '光が、ゆっくりと収まっていく。' },
+        { text: '「...」' },
+        {
+          text: '恐る恐る、目を開ける。',
+          action: async () => {
+            changeBackgroundImage('opening', 'living_nighttime_light.jpg');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        },
+        { text: '視界がゆっくりとクリアになっていく。' },
+        { text: '「...あ」' },
+        { text: '目の前には、心配そうな顔をしたルカと、ひながいた。' },
+        {
+          text: '「...大丈夫？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
+        },
+        { text: 'ルカの声が聞こえる。' },
+        {
+          text: '「お兄ちゃん...！」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'confused', false);
+          }
+        },
+        { text: 'ひなが駆け寄ってくる。' },
+        { text: '「ああ...」' },
+        { text: '俺は自分の声を確認する。' },
+        {
+          text: 'そして――',
+          choiceId: 'k01',
+        },
       ],
     }
   ],
@@ -3506,4 +4266,590 @@ export const openingChoices = {
       branch: [],
     }
   ],
+  k01: [
+    {
+      buttonText: '儀式は成功した',
+      branch: [
+        // end-hina-success.mdへ
+        { text: '「...戻った」' },
+        {
+          text: '元通りの、低く落ち着いた自分の声。',
+          action: async () => {
+            bgm.play('ending');
+          }
+        },
+        { text: '自分の手もいつも通りだ。' },
+        {
+          text: '「お兄ちゃん！」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
+        },
+        { text: 'ひなが駆け寄ってくる。' },
+        {
+          text: '「本当に...元に戻ったんだね」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
+        },
+        { text: '「ああ」' },
+        { text: '俺は自分の体を確認する。' },
+        { text: '身長も、体格も、全て元通りだ。' },
+        {
+          text: '「よかった...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
+        },
+        { text: 'ルカがへたり込むように座り込んだ。' },
+        {
+          text: '「本当に...よかった...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', true);
+          }
+        },
+        { text: 'その声は、安堵と疲労が混ざっていた。' },
+        { text: '「ルカ、ありがとう」' },
+        {
+          text: '「ううん...私が巻き込んじゃったんだし」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
+        },
+        { text: 'ルカが顔を上げて、少し寂しそうに笑う。' },
+        {
+          text: '「...実は少し、残念かも」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'pout', true);
+          }
+        },
+        { text: '「え？」' },
+        {
+          text: '「女の子の姿、可愛かったから。...でも、やっぱりいつもの姿が一番落ち着くね」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
+        },
+        { text: 'その言葉に、俺は少し照れくさくなった。' },
+        { text: '「そ、そうか...」' },
+        { text: 'ひなが俺の袖を引く。' },
+        {
+          text: '「お兄ちゃん」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
+        },
+        { text: '「ん？」' },
+        {
+          text: '「...お帰り」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
+        },
+        { text: '小さな声で、ひながそう言った。' },
+        {
+          text: 'その言葉が、何だかとても温かく感じた。',
+          choiceId: 'n01',
+        },
+        { text: 'それからの日々は、以前より少しだけ変わった。' },
+        { text: 'ひなは相変わらずツンデレだけど、たまに見せる笑顔は以前より柔らかい。' },
+        { text: 'ルカとの部活も、前より楽しく感じる。' },
+        { text: 'あの二日間の出来事は、俺にとって――' },
+        { text: 'きっと、忘れられない思い出になるだろう。' },
+        { text: '<END>' },
+      ],
+    },
+    {
+      buttonText: '儀式は失敗した',
+      branch: [
+        // end-hina-failed.mdへ
+        { text: '「あれ？」' },
+        { text: '高い声が出た。' },
+        { text: '俺は慌てて自分の体を見た。' },
+        { text: '小さい女の子の手も、胸の膨らみも、細い体も――全部、そのまま。' },
+        { text: '「戻ってない...？」' },
+        {
+          text: '「え...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+            bgm.play('ending');
+          }
+        },
+        { text: 'ルカが慌てて魔道書を見返す。' },
+        {
+          text: '「おかしい...詠唱も魔法陣も、全部合ってたはずなのに...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', true);
+          }
+        },
+        { text: '「お兄ちゃん...」' },
+        { text: 'ひなが不安そうに俺を見る。' },
+        {
+          text: '「あれ〜？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
+        },
+        { text: 'ページをめくり続けるルカの動きが、ある一節で止まった。' },
+        {
+          text: '「...あ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
+        },
+        { text: '「どうした？」' },
+        {
+          text: '「読み間違えてた...みたい」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'perori', true);
+          }
+        },
+        { text: '「は？」' },
+        {
+          text: '「その...『満月の夜』じゃなくて、『新月の夜』だったみたい...てへ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'perori', true);
+          }
+        },
+        { text: '「てへ、じゃねえよ！」' },
+        { text: '思わず叫ぶ。' },
+        { text: '「じゃあ次は...！？」' },
+        {
+          text: '「...新月は、二週間後だね」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
+        },
+        { text: '「二週間...！？」' },
+        { text: '俺はその場に崩れ落ちた。 ' },
+        { text: '二日間でも大変だったのに、二週間もこのままだなんて...。' },
+        { text: '絶望的な気分で床を見つめていると、不意に頭に手が置かれた。' },
+        { text: '「...ひな？」' },
+        { text: '顔を上げると、ひなが複雑そうな、でもどこか吹っ切れたような顔で俺を見下ろしていた。' },
+        {
+          text: '「...はぁ。しょうがないなぁ」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', false);
+          }
+        },
+        { text: '「ひな...」' },
+        {
+          text: '「なっちゃったもんは仕方ないでしょ。お兄ちゃんがドジなのは今に始まったことじゃないし」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'jitome', true);
+          }
+        },
+        { text: '「俺のドジじゃないだろ！？」' },
+        {
+          text: '「はいはい。ほら、立って」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', false);
+          }
+        },
+        { text: 'ひなが俺の手を引いて立たせる。' },
+        { text: 'そして、自分の髪につけていたヘアゴムを外して、俺に手渡してきた。' },
+        { text: '「え...これ？」' },
+        {
+          text: '「私の髪、結んでよ」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_close', true);
+          }
+        },
+        { text: '「は？」' },
+        {
+          text: '「女の子になったんだから、それくらいできるようにならなきゃダメでしょ？」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal', true);
+          }
+        },
+        { text: 'ひながニッと笑う。' },
+        {
+          text: '「やらせてばっかじゃなくて、私の髪も結べるようになってよね！ お姉ちゃん？」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
+        },
+        { text: '「お、お姉ちゃんって呼ぶな...！」' },
+        {
+          text: '「いーじゃん。二週間限定なんでしょ？ 覚悟決めなよ」',
+          speaker: 'ひな',
+          action: async () => {
+            changeCharacterImage('hina', 'nomal_open', true);
+          }
+        },
+        { text: 'ひなはそう言って、俺に背中を向けて座り込んだ。' },
+        { text: 'その耳は少し赤くなっている。' },
+        { text: '「...たくっ」' },
+        { text: '俺は観念して、ひなの髪を手に取った。' },
+        { text: '<END>' },
+      ],
+    }
+  ],
+  l01: [
+    {
+      buttonText: '儀式は成功した',
+      branch: [
+        // end-ruka-success.mdへ
+        { text: '「...戻った」' },
+        {
+          text: '元通りの、低く落ち着いた自分の声。',
+          action: async () => {
+            bgm.play('ending');
+          }
+        },
+        { text: 'まだ信じられない気持ちで、もう一度自分の体を確認する。' },
+        { text: '大きな男の手だ。' },
+        { text: '胸の重みは消えている。' },
+        { text: '体つきも、元の男の体。' },
+        { text: '本当に、戻ったんだ。' },
+        {
+          text: '「......実は少し、残念かも」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'pout', true);
+          }
+        },
+        { text: 'ルカが、小さく呟いた。' },
+        { text: '「え？」' },
+        { text: '聞き返すと、ルカは頬を赤らめながら続けた。' },
+        {
+          text: '「女の子の...君、可愛かったから」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'doya', false);
+          }
+        },
+        { text: '「お、おい...」' },
+        {
+          text: '「......でも、やっぱりいつもの姿が一番落ち着くね」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', true);
+          }
+        },
+        { text: 'ルカが柔らかく微笑む。' },
+        { text: 'その笑顔を見て、俺も自然と笑顔になっていた。' },
+        { text: '「...そうか」' },
+        {
+          text: '「うん」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
+        },
+        { text: '窓の外では、満月が静かに輝いている。' },
+        { text: 'この二日間の、不思議な出来事。' },
+        { text: '夢みたいな時間は、こうして終わった。' },
+        {
+          text: 'それから数日後の放課後の部室。',
+          action: async () => {
+            changeBackgroundImage('opening', 'bushitu_daytime.jpg');
+            deleteCharacterTatie();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        },
+        {
+          text: '「今日の実験は、猫耳が生える秘薬に挑戦！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'perori', true);
+          }
+        },
+        { text: '嫌な予感が背筋を走る。' },
+        { text: '「...おい」' },
+        {
+          text: '「今度は危険はないと思うんだよね。試してみたくない？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
+        },
+        { text: 'ルカがじりじりと近寄ってくる。' },
+        { text: 'その目は、完全に獲物を狙う狩人のそれだった。' },
+        { text: '「断る！ 絶対にだ！」' },
+        { text: '俺は全力で立ち上がり、部室のドアへとダッシュした。' },
+        {
+          text: '「えーっ！ 待ってよー！ ネコ耳絶対似合うのにー！」',
+          speaker: 'ルカ',
+          choiceId: 'p01',
+          action: async () => {
+            changeCharacterImage('ruka', 'pout', false);
+          }
+        },
+        { text: 'どうやら、俺の平穏な日々が戻ってくるのは、まだ少し先になりそうだ。' },
+        { text: 'それでも、あの不安な夜に比べれば――こんな追いかけっこも悪くない。' },
+        { text: '俺は苦笑しながら、学校の廊下を駆け抜けた。' },
+        { text: '<END>' },
+      ],
+    },
+    {
+      buttonText: '儀式は失敗した',
+      branch: [
+        // end-ruka-failed.mdへ
+        { text: '耳に届いたのは、透き通るような高い声だった。' },
+        { text: '「嘘だろ...」' },
+        { text: '俺は慌てて自分の手を見た。' },
+        { text: '小さい。' },
+        { text: '華奢な、女の子の手。' },
+        { text: '胸の膨らみも、細い体も――全部、そのまま。' },
+        {
+          text: '「戻ってない...？」',
+          action: async () => {
+            bgm.play('ending');
+          }
+        },
+        {
+          text: '「あれ〜？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'surprised', false);
+          }
+        },
+        { text: 'ルカが首を傾げる。' },
+        {
+          text: '「おかしいな...ちゃんと手順通りにやったんだけど...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', true);
+          }
+        },
+        { text: 'ルカは魔道書をパラパラとめくり始めた。' },
+        { text: '「おい、ルカ！ どういうことだよ！？」' },
+        {
+          text: '「え、えっとね...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'trouble', true);
+          }
+        },
+        { text: 'ルカがページを指差す。' },
+        {
+          text: '「あ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', false);
+          }
+        },
+        { text: '「...何だよ」' },
+        {
+          text: '「文献を...読み間違えてたみたい」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'perori', true);
+          }
+        },
+        { text: '「は？」' },
+        {
+          text: '「その...『満月の夜』じゃなくて、『新月の夜』だったみたい...てへ」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'perori', true);
+          }
+        },
+        { text: '「てへ、じゃねえよ！」' },
+        { text: '思わず叫ぶ。' },
+        { text: '「じゃあ次は...！？」' },
+        {
+          text: '「...新月は、二週間後だね」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
+        },
+        { text: '「二週間！？」' },
+        { text: '頭を抱える。' },
+        { text: '二日間でも大変だったのに、二週間もこのままだなんて...。' },
+        {
+          text: '「ご、ごめん...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'a', true);
+          }
+        },
+        { text: 'ルカが申し訳なさそうに俯く。' },
+        { text: 'でも――' },
+        { text: 'よく見ると、その表情は妙に明るい。' },
+        { text: 'いや、むしろ...嬉しそう？' },
+        { text: '「...ルカ？」' },
+        {
+          text: '「ん？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_close', false);
+          }
+        },
+        { text: '「お前...もしかして」' },
+        {
+          text: '「な、何？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
+        },
+        { text: 'ルカが目を逸らす。' },
+        { text: 'その様子を見て、俺は確信した。' },
+        { text: '「わざと間違えたんじゃ...」' },
+        {
+          text: '「そ、そんなことないよ！ 本当に読み間違えただけで！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'blush', true);
+          }
+        },
+        { text: '慌てて否定するルカ。' },
+        { text: 'でも、その顔は真っ赤だ。' },
+        { text: '「...まあ、いいけど」' },
+        { text: 'ため息をつく。' },
+        { text: '今更どうしようもない。' },
+        {
+          text: '「大丈夫。私が責任を持って、二週間...観察...ううん、お世話してあげる」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'perori', true);
+          }
+        },
+        { text: 'ルカが俺の手を取る。' },
+        { text: 'その目は、キラキラと輝いていた。' },
+        { text: '何だか、とんでもないことになりそうな予感がした。' },
+        { text: '「と、とりあえず...明日からどうすればいいんだよ」' },
+        {
+          text: '「大丈夫！ ちゃんと考えてあるから」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', true);
+          }
+        },
+        { text: 'ルカが自信満々に胸を張る。' },
+        {
+          text: '「まず、学校は...転入生ってことにしよう！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
+        },
+        { text: '「は！？」' },
+        {
+          text: '「私の親戚が急に転校してきたってことにすれば、自然でしょ？」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', true);
+          }
+        },
+        { text: '「自然じゃねえよ！」' },
+        {
+          text: '「大丈夫大丈夫。私に任せて」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'perori', true);
+          }
+        },
+        { text: 'ルカはそう言って、楽しそうに笑った。' },
+        {
+          text: '「それに...」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'base', false);
+          }
+        },
+        { text: '「...何だよ」' },
+        {
+          text: '「二週間もあれば、色々できるよね」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'doya', true);
+          }
+        },
+        { text: 'ルカが意味深に言う。' },
+        { text: '「...嫌な予感しかしないんだけど」' },
+        {
+          text: '「ふふ、お楽しみに」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', false);
+          }
+        },
+        { text: '窓の外では、満月が静かに輝いている。' },
+        { text: 'この不思議な出来事は、まだ終わらない。' },
+        { text: 'むしろ、これからが本番なのかもしれない。' },
+        { text: '「...はあ」' },
+        { text: '大きくため息をつく俺の手を、ルカがぎゅっと握った。' },
+        {
+          text: '「ね、明日からも一緒に頑張ろう？」',
+          speaker: 'ルカ',
+          choiceId: 'o01',
+          action: async () => {
+            changeCharacterImage('ruka', 'base_open', false);
+          }
+        },
+        {
+          text: '「やった！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', true);
+          }
+        },
+        { text: 'ルカが嬉しそうに笑う。' },
+        { text: 'その笑顔を見ていると、不思議と悪い気はしなかった。' },
+        { text: '二週間。' },
+        { text: 'この姿で、ルカと過ごす二週間。' },
+        { text: 'どうなるか分からないけど――' },
+        { text: '「...まあ、何とかなるか」' },
+        {
+          text: '「うん！ 絶対楽しくなるよ！」',
+          speaker: 'ルカ',
+          action: async () => {
+            changeCharacterImage('ruka', 'happy', true);
+          }
+        },
+        { text: 'ルカの明るい声が、部屋に響いた。' },
+        { text: 'こうして、俺の不思議な日々は続いていく。' },
+        { text: 'ルカと二人で。' },
+        { text: '<END>' },
+      ],
+    }
+  ],
+  n01: [
+    {
+      buttonText: 'ただいま',
+      branch: [],
+    }
+  ],
+  o01: [
+    {
+      buttonText: '...仕方ないな',
+      branch: [],
+    },
+    {
+      buttonText: '...ちょっとだけなら',
+      branch: [],
+    }
+  ],
+  p01: [
+    {
+      buttonText: '誰がやるか！',
+      branch: [],
+    }
+  ]
 };
