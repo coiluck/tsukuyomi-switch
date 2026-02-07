@@ -29,6 +29,7 @@ document.getElementById("top-button-start").addEventListener("click", () => {
 });
 
 import { globalGameState } from './modules/gameState';
+import { se } from './modules/music';
 
 document.getElementById('modal-opening').addEventListener('click', () => {
   if (isDisplayingSelection || isUpdating) {
@@ -161,6 +162,7 @@ function displayChoices(choiceId) {
     button.textContent = choice.buttonText;
     button.addEventListener('click', (event) => {
       event.stopPropagation();
+      se.play("button_game");
       isDisplayingSelection = false;
       document.getElementById('opening-choices-container').innerHTML = '';
 
@@ -197,16 +199,19 @@ function displayChoices(choiceId) {
 // 最初に一度だけ実行
 updateStory();
 
+import { showConfirmWindow } from './modules/message';
 
 // 戻るボタン
 document.getElementById('opening-icon-prev-text').addEventListener('click', (event) => {
   event.stopPropagation();
   // 履歴が2未満(現在の + 戻る先)は戻れない
   if (isDisplayingSelection || isUpdating || displayHistory.length < 2) {
-    console.log('選択肢より前には戻れません');
+    showConfirmWindow('選択肢より前には戻れません', false, {});
+    se.play("disable");
     return;
   }
   isUpdating = true;
+  se.play("button3");
 
   // 現在の状態を履歴から削除
   displayHistory.pop();
@@ -282,6 +287,8 @@ async function displayText(text) {
   }
 }
 
+import { bgm } from './modules/music';
+
 // ロードしたデータの復元処理
 export async function restoreGameFromGlobalState() {
   openingStoryIndex = globalGameState.storyData.openingStoryIndex;
@@ -342,5 +349,8 @@ export async function restoreGameFromGlobalState() {
   } else {
     openingStoryIndex++;
   }
+
+  bgm.play(globalGameState.LastBGM);
+
   console.log('Game state restored successfully.');
 }

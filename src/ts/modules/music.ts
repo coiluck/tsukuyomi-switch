@@ -77,7 +77,7 @@ class SEController {
   }
 
   async play(fileName: string) {
-    const wavList: string[] = ['button1', 'button2', 'button3', 'day', 'phone_call'];
+    const wavList: string[] = ['button1', 'button2', 'button3', 'button_close', 'button_game', 'day', 'phone_call', 'disable'];
     const extension = wavList.includes(fileName) ? '.wav' : '.mp3';
 
     this.audio = new Audio(`./src/assets/audio/se/${fileName}${extension}`);

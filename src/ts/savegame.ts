@@ -1,9 +1,11 @@
 // savegame.ts
 import { closeModal } from './modules/changeModal.js';
+import { se } from './modules/music.js';
 
 document.querySelector('.savegame-close-button-container')?.addEventListener('click', () => {
   // showModalからしか表示されない
   closeModal('savegame');
+  se.play("button_close");
 });
 
 import { loadGameExcerpt, saveGameData } from './modules/gameState.ts';

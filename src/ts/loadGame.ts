@@ -1,5 +1,6 @@
 // loadGame.js
 import { changeModal, closeModal } from './modules/changeModal.js';
+import { se } from './modules/music';
 
 document.querySelector('.loadgame-close-button-container')?.addEventListener('click', () => {
   if (document.getElementById('modal-loadgame')?.style.zIndex === '100') {
@@ -7,6 +8,7 @@ document.querySelector('.loadgame-close-button-container')?.addEventListener('cl
   } else {
     changeModal('top', null, 500);
   }
+  se.play("button_close");
 });
 
 import { loadGameExcerpt, loadGameFromSlot } from './modules/gameState.ts';
@@ -61,6 +63,7 @@ export async function initLoadGame() {
           return;
         }
         loadItem.classList.add('selected');
+        se.play("button3");
         showConfirmWindow(`スロット ${slotId} をロードしますか？<br>現在の進行状況は失われます。`, true, {
           onOk: async () => {
             const success = await loadGameFromSlot(slotId);
@@ -68,6 +71,7 @@ export async function initLoadGame() {
               closeModal('loadgame');
               await restoreGameFromGlobalState();
               changeModal('opening', null, 500);
+              se.play("button1");
             }
             loadItem.classList.remove('selected');
 
@@ -75,6 +79,7 @@ export async function initLoadGame() {
           },
           onCancel: () => {
             loadItem.classList.remove('selected');
+            se.play("button_close");
           }
         });
       });

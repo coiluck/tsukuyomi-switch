@@ -12,6 +12,7 @@ export function initSetting() {
     } else {
       changeModal('top', null, 500);
     }
+    se.play("button_close");
   });
 
   setupRadioGroup(
@@ -21,6 +22,7 @@ export function initSetting() {
       globalSettingState.bgmVolume = value;
       saveSettingsData();
       bgm.setVolume(value / 6);
+      se.play("button3");
     }
   );
   setupRadioGroup(
@@ -29,6 +31,8 @@ export function initSetting() {
     (value) => {
       globalSettingState.seVolume = value;
       saveSettingsData();
+      se.setVolume(value / 6);
+      se.play("button3");
     }
   );
   setupRadioGroup(
@@ -37,6 +41,7 @@ export function initSetting() {
     (value) => {
       globalSettingState.textSpeed = value;
       saveSettingsData();
+      se.play("button3");
     }
   );
   // Screen Size
@@ -110,6 +115,7 @@ async function setupScreenSizeControl() {
     if (isFullscreen === true) {
       await appWindow.setFullscreen(false);
       await appWindow.setSize(new LogicalSize(800, 500));
+      se.play("button3");
     }
   });
 
@@ -122,6 +128,7 @@ async function setupScreenSizeControl() {
     const isFullscreen = await appWindow.isFullscreen();
     if (isFullscreen === false) {
       await appWindow.setFullscreen(true);
+      se.play("button3");
     }
   });
 
