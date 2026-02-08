@@ -70,8 +70,6 @@ async function updateStory() {
       console.log(`終了！ Ending: ${endingType}`);
       if (endingType !== 'unknown' && !globalSettingState.ending.includes(endingType)) {
         // 未獲得
-        globalSettingState.ending.push(endingType);
-        saveGameData(endingType);
         showModal('gallary');
         setTimeout(() => {
           gallaryAchieved(endingType);
@@ -161,6 +159,10 @@ async function displayStory(index, executeAction = true) {
   } else {
     document.getElementById('opening-character-name').style.visibility = 'hidden';
     deleteCharacterFace();
+
+    const parts = globalGameState.LastCharacter.split('/');
+    parts[0] = 'false';
+    globalGameState.LastCharacter = parts.join('/');
   }
 
   // テキストを表示
@@ -332,6 +334,7 @@ async function displayText(text) {
 }
 
 import { bgm } from './modules/music';
+import { changeCharacterImage, changeCharacterImageWithoutFace } from './modules/character';
 
 // ロードしたデータの復元処理
 export async function restoreGameFromGlobalState() {
@@ -395,6 +398,15 @@ export async function restoreGameFromGlobalState() {
   }
 
   bgm.play(globalGameState.LastBGM);
+  // 常にfaceなし
+  if (globalGameState.LastCharacter !== '') {
+    if (globalGameState.LastCharacter.split('/')[0] === 'true') {
+      changeCharacterImage(globalGameState.LastCharacter.split('/')[1], globalGameState.LastCharacter.split('/')[2]);
+    } else {
+      changeCharacterImageWithoutFace(globalGameState.LastCharacter.split('/')[1], globalGameState.LastCharacter.split('/')[2]);
+    }
+  }
+  console.log(globalGameState.LastCharacter);
 
   console.log('Game state restored successfully.');
 }

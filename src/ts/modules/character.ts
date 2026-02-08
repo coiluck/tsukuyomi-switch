@@ -1,10 +1,14 @@
 // character.ts
+import { globalGameState } from './gameState';
+
 export async function changeCharacterImage(character: 'ruka' | 'hina', fileName: string, isActive: boolean) {
   const characterImageContainer = document.getElementById('opening-character-container') as HTMLElement;
   const oldImages = document.querySelectorAll('#opening-character-container img') as NodeListOf<HTMLImageElement>;
 
   const tatieSrc = `/src/assets/images/characters/${character}/full/${fileName}.png`;
   const faceSrc = `/src/assets/images/characters/${character}/face/${fileName}.png`;
+
+  globalGameState.LastCharacter = `true/${character}/${fileName}`;
 
   const displayCharacterTatie = async (isActive: boolean) => {
     const tempImage = new Image();
@@ -58,6 +62,8 @@ export async function changeCharacterImage(character: 'ruka' | 'hina', fileName:
 export function changeCharacterImageWithoutFace(character: 'ruka' | 'hina', fileName: string) {
   const characterImageContainer = document.getElementById('opening-character-container') as HTMLElement;
   const currentCharacterImage = document.querySelector(`#opening-character-container img`) as HTMLImageElement;
+
+  globalGameState.LastCharacter = `true/${character}/${fileName}`;
 
   const newImageSrc = `/src/assets/images/characters/${character}/full/${fileName}.png`;
   const tempImage = new Image();

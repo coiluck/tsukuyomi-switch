@@ -109,6 +109,7 @@ export function changeBackgroundImage(object, imagePath) {
     const modal = document.getElementById(`modal-${object}`);
     const backgroundImage = modal.querySelector(`#${object}-background-image-container .background-image`);
     const newImageSrc = `./src/assets/images/background/${imagePath}`;
+    globalGameState.LoadImageSrc = newImageSrc;
 
     // フェードアウト
     modal.classList.remove("fade-in");
@@ -126,7 +127,6 @@ export function changeBackgroundImage(object, imagePath) {
       // 画像の読み込み完了後
       tempImage.onload = () => {
         backgroundImage.src = newImageSrc;
-        globalGameState.LoadImageSrc = newImageSrc;
 
         resolve(); // ここで返せば背景の変更と同時にテキストも表示され始めるはず
         // フェードイン
@@ -141,6 +141,7 @@ export function changeBackgroundImage(object, imagePath) {
 export function changeBackgroundImageWithCrossFade(FileName) {
   const container = document.getElementById('opening-background-image-container');
   const newImageSrc = `./src/assets/images/background/${FileName}`;
+  globalGameState.LoadImageSrc = newImageSrc;
 
   const oldImage = container.querySelector('img.background-image');
 
@@ -156,13 +157,13 @@ export function changeBackgroundImageWithCrossFade(FileName) {
     oldImage.classList.add('fade-out');
     setTimeout(() => {
       oldImage.remove();
-      globalGameState.LoadImageSrc = newImageSrc;
     }, 500);
   };
 }
 
 export function changeBackgroundImageWithoutFade(FileName) {
   const newImageSrc = `./src/assets/images/background/${FileName}`;
+  globalGameState.LoadImageSrc = newImageSrc;
   const tempImage = new Image();
   tempImage.src = newImageSrc;
   tempImage.onload = () => {
@@ -170,7 +171,6 @@ export function changeBackgroundImageWithoutFade(FileName) {
     const backgroundImage = container.querySelector('img.background-image');
     backgroundImage.src = newImageSrc;
   }
-  globalGameState.LoadImageSrc = newImageSrc;
 }
 
 export function shakeBackgroundImage(duration = 500, intensity = 10) {

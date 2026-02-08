@@ -14,7 +14,7 @@ document.querySelector('.loadgame-close-button-container')?.addEventListener('cl
 import { loadGameExcerpt, loadGameFromSlot } from './modules/gameState.ts';
 import { showConfirmWindow } from './modules/message.ts';
 import { restoreGameFromGlobalState } from './opening.js';
-import { deleteCharacterTatie } from './modules/character.ts';
+import { deleteCharacterFace, deleteCharacterTatie } from './modules/character.ts';
 
 export async function initLoadGame() {
   const loadItemContainer = document.querySelector('.loadgame-container') as HTMLElement;
@@ -69,13 +69,13 @@ export async function initLoadGame() {
             const success = await loadGameFromSlot(slotId);
             if (success) {
               closeModal('loadgame');
+              deleteCharacterFace();
+              deleteCharacterTatie();
               await restoreGameFromGlobalState();
               changeModal('opening', null, 500);
               se.play("button1");
             }
             loadItem.classList.remove('selected');
-
-            deleteCharacterTatie();
           },
           onCancel: () => {
             loadItem.classList.remove('selected');

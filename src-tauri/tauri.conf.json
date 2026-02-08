@@ -13,7 +13,7 @@
     "withGlobalTauri": true,
     "windows": [
       {
-        "title": "tsukuyomi-switch",
+        "title": "ツクヨミスイッチ",
         "width": 800,
         "height": 500
       }

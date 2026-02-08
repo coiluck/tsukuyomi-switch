@@ -23,7 +23,7 @@ export const openingScenario = [
   },
   { text: 'ここはオカルト部の部室。部員は俺たち二人だけだ。' },
   { text: 'ロウソク、奇妙な文様が描かれた布、そして古めかしい本が机の上に並んでいる。' },
-  { text: '「はぁ……。なぁルカ、本当にやるのか？ これ」' },
+  { text: '「はぁ...。なぁルカ、本当にやるのか？ これ」' },
   {
     text: '「当たり前でしょ？ 今日はこの実験のために、わざわざ『古の魔道書（通販）』を取り寄せたんだから！」',
     speaker: 'ルカ',
@@ -105,7 +105,7 @@ export const openingScenario = [
   },
   { text: '俺は諦めて魔法陣の中心に立った。' },
   {
-    text: '「オッケー！ それじゃあ始めるよ……」',
+    text: '「オッケー！ それじゃあ始めるよ...」',
     speaker: 'ルカ',
     action: async () => {
       changeCharacterImage('ruka', 'base_open', true);
@@ -295,7 +295,7 @@ export const openingScenario = [
   { text: '完全に性別が変わってしまったようだった。' },
   { text: '「これ戻れるんだろうな？ 一生このままとか言わないよな！？」' },
   {
-    text: '「あ、そうだった。えっとね……」',
+    text: '「あ、そうだった。えっとね...」',
     speaker: 'ルカ',
     action: async () => {
       changeCharacterImage('ruka', 'a', false);
@@ -303,7 +303,7 @@ export const openingScenario = [
   },
   { text: 'ルカは慌てて床に落ちていた古の魔道書（通販）を拾い上げ、ページをめくる。' },
   {
-    text: '「えっと……『可逆性の項』……あった。これだ」',
+    text: '「えっと...『可逆性の項』...あった。これだ」',
     speaker: 'ルカ',
     action: async () => {
       changeCharacterImage('ruka', 'base', false);
@@ -316,7 +316,7 @@ export const openingScenario = [
       changeCharacterImage('ruka', 'base_open', false);
     }
   },
-  { text: '「満月……？ 次の満月っていつだ？」' },
+  { text: '「満月...？ 次の満月っていつだ？」' },
   { text: '俺は部室のカレンダーに目をやるが、月の満ち欠けは書かれていないようだった。' },
   { text: 'ルカがスマホを取り出して検索する。' },
   {
@@ -3179,7 +3179,7 @@ export const openingChoices = {
           text: '夜。既に外は暗くなっていた。',
           action: async () => {
             bgm.fadeOut(500);
-            nextDay(3, 'city2_nighttime.jpg');
+            nextDay(3, 'kissaten_nighttime.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
             deleteCharacterTatie();
             changeBackgroundImage('opening', 'living_nighttime_light.jpg');
@@ -3687,7 +3687,7 @@ export const openingChoices = {
           text: '夜。既に外は暗くなっていた。',
           action: async () => {
             bgm.fadeOut(500);
-            nextDay(3, 'kissaten_nighttime.jpg');
+            nextDay(3, 'park_nighttime.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
             deleteCharacterTatie();
             changeBackgroundImage('opening', 'living_nighttime_light.jpg');

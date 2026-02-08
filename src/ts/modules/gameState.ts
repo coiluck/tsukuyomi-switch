@@ -32,7 +32,7 @@ const initialGameState: gameState = {
   },
   root: null,
   LastBGM: '',
-  LastCharacter: '',
+  LastCharacter: '', // isNeedFace/character/fileName
   LoadImageSrc: './src/assets/images/background/bushitu_daytime.jpg',
 };
 

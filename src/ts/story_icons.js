@@ -1,6 +1,7 @@
 // story_icons.js
 import { changeModal, showModal, closeModal } from './modules/changeModal.js';
 import { bgm, se } from './modules/music';
+import { deleteCharacterFace, deleteCharacterTatie } from './modules/character';
 
 document.getElementById('opening-icon-save').addEventListener('click', (event) => {
   event.stopPropagation();
@@ -47,4 +48,6 @@ document.getElementById('menu-item-return-title').addEventListener('click', () =
   changeModal('top');
   bgm.fadeOut();
   se.play("button3");
+  deleteCharacterFace();
+  deleteCharacterTatie();
 });

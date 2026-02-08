@@ -1,13 +1,15 @@
 // gallary.js
 import { changeModal, closeModal } from './modules/changeModal.js';
-import { se } from './modules/music.js';
+import { bgm, se } from './modules/music.js';
 
 document.querySelector('.gallary-close-button-container')?.addEventListener('click', () => {
-  if (document.getElementById('modal-loadgame')?.style.zIndex === '100') {
+  if (document.getElementById('modal-gallary')?.style.zIndex === '100') {
     closeModal('gallary');
     changeModal('ending', null, 500);
+    bgm.fadeOut();
   } else {
     changeModal('top', null, 500);
+    bgm.fadeOut();
   }
   se.play("button_close");
 });
@@ -82,7 +84,7 @@ export function initGallary() {
   });
 }
 
-export function gallaryAchieved(id: number) {
+export async function gallaryAchieved(id: number) {
   const item = collectionData.find(d => d.id === id);
   if (!item) return;
 
@@ -105,6 +107,6 @@ export function gallaryAchieved(id: number) {
 
   if (!globalSettingState.ending.includes(id)) {
     globalSettingState.ending.push(id);
-    saveSettingsData();
+    await saveSettingsData();
   }
 }
