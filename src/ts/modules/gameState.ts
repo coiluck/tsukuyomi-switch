@@ -20,13 +20,15 @@ interface SettingsState {
   voiceVolume: number;
   textSpeed: number;
   screenSize: 'window' | 'fullscreen';
+  ending: number[];
 }
 
-const initialGameState = {
+const initialGameState: gameState = {
   storyData : {
     openingStoryIndex: 0,
     branchStack: [],
     displayHistory: [],
+    currentText: null,
   },
   root: null,
   LastBGM: '',
@@ -34,12 +36,14 @@ const initialGameState = {
   LoadImageSrc: './src/assets/images/background/bushitu_daytime.jpg',
 };
 
-const initialSettingsState = {
+const initialSettingsState: SettingsState = {
   bgmVolume: 2,
   seVolume: 5,
   voiceVolume: 5,
   textSpeed: 3,
   screenSize: 'window',
+  // エンディングだけど入れるとこないからここに入れる
+  ending: []
 }
 
 export const globalGameState = structuredClone(initialGameState); // 初期化

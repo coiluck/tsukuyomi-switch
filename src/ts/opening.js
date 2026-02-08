@@ -28,8 +28,10 @@ document.getElementById("top-button-start").addEventListener("click", () => {
   updateStory();
 });
 
-import { globalGameState } from './modules/gameState';
+import { globalGameState, globalSettingState, saveGameData } from './modules/gameState';
 import { se } from './modules/music';
+import { showModal } from './modules/changeModal';
+import { gallaryAchieved } from './gallary';
 
 document.getElementById('modal-opening').addEventListener('click', () => {
   if (isDisplayingSelection || isUpdating) {
@@ -63,6 +65,21 @@ async function updateStory() {
     } else {
       // 共通ルート終了
       isUpdating = false;
+
+      const endingType = checkEnding();
+      console.log(`終了！ Ending: ${endingType}`);
+      if (endingType !== 'unknown' && !globalSettingState.ending.includes(endingType)) {
+        // 未獲得
+        globalSettingState.ending.push(endingType);
+        saveGameData(endingType);
+        showModal('gallary');
+        setTimeout(() => {
+          gallaryAchieved(endingType);
+        }, 1000);
+      } else {
+        // 獲得済み
+        showModal('gallary');
+      }
     }
     return;
   }
@@ -90,6 +107,32 @@ async function updateStory() {
     openingStoryIndex++;
   }
   isUpdating = false;
+}
+
+function checkEnding() {
+  const hasPassedChoice = (targetId, targetIndex) => {
+    return displayHistory.some(historyItem =>
+      historyItem.branchStackData &&
+      historyItem.branchStackData.some(branch =>
+        branch.choiceId === targetId && branch.choiceIndex === targetIndex
+      )
+    );
+  };
+
+  if (hasPassedChoice('k01', 0)) {
+    // hina success
+    return 3;
+  } else if (hasPassedChoice('k01', 1)) {
+    // hina failed
+    return 4;
+  } else if (hasPassedChoice('l01', 0)) {
+    // ruka success
+    return 1;
+  } else if (hasPassedChoice('l01', 1)) {
+    // ruka failed
+    return 2;
+  }
+  return 'unknown';
 }
 
 import { deleteCharacterFace } from './modules/character';
