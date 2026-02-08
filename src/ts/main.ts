@@ -9,4 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initSetting();
   initSaveGame();
   initLoadGame();
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault()
+  })
 });
