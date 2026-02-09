@@ -21,6 +21,13 @@
   -webkit-touch-callout: none;
 }
 
+#modal-gallary * {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
 .gallary-image-container {
   position: absolute;
   top: 0;

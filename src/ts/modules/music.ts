@@ -5,7 +5,8 @@ class BGMController {
   private audio: HTMLAudioElement | null = null;
   private volume: number = 0;
   private FADE_TIME: number = 1000;
-  private fadeInterval: number | null = null;
+  // private fadeInterval: number | null = null;
+  private fadePromise: Promise<void> | null = null;
 
   setVolume(volume: number) {
     this.volume = volume;
@@ -14,17 +15,20 @@ class BGMController {
     }
   }
 
-  async play(fileName: string) {
-    // 新しいやつの事前読み込み
+  async play(fileName: string, isLoop: boolean = true) {
     const nextAudio = new Audio(`./src/assets/audio/bgm/${fileName}.mp3`);
     nextAudio.volume = this.volume;
-    nextAudio.loop = true;
+    nextAudio.loop = isLoop;
     nextAudio.load();
-    // 古い
+
     if (this.audio) {
       await this.fadeOut();
     }
-    // 新しい
+    if (this.audio) {
+      this.audio.pause();
+      this.audio = null;
+    }
+
     this.audio = nextAudio;
     this.audio.play().catch((e) => {
       console.warn('再生に失敗しました:', e);
@@ -37,33 +41,48 @@ class BGMController {
       console.warn('再生中の音楽がありません');
       return Promise.resolve();
     }
-    return new Promise<void>((resolve) => {
-      const startVolume = this.audio?.volume || 0;
-      const fadeStep = startVolume / (duration / 50);
-      this.fadeInterval = setInterval(() => {
+
+    if (this.fadePromise) return this.fadePromise;
+
+    this.fadePromise = new Promise<void>((resolve) => {
+      const startVolume = this.audio?.volume ?? 0;
+      const stepMs = 50;
+      const steps = Math.max(1, Math.round(duration / stepMs));
+      const fadeStep = startVolume / steps;
+
+      const intervalId = window.setInterval(() => {
         if (!this.audio) {
-          if (this.fadeInterval) clearInterval(this.fadeInterval);
+          window.clearInterval(intervalId);
+          // this.fadeInterval = null;
+          this.fadePromise = null;
           resolve();
           return;
-        } else if (this.audio.volume > fadeStep) {
+        }
+        if (this.audio.volume > fadeStep) {
           this.audio.volume = Math.max(0, this.audio.volume - fadeStep);
         } else {
           // フェードアウト完了
           this.audio.volume = 0;
           this.audio.pause();
 
-          if (this.fadeInterval) clearInterval(this.fadeInterval);
-          this.fadeInterval = null;
-
+          window.clearInterval(intervalId);
+          // this.fadeInterval = null;
+          this.fadePromise = null;
+          console.log(this.audio, 'fadeOut完了');
           resolve();
         }
-      }, 50);
+      }, stepMs);
+
+      // this.fadeInterval = intervalId as unknown as number;
     });
+
+    return this.fadePromise;
   }
 }
 
 const bgm = new BGMController();
 export { bgm };
+
 
 class SEController {
   private audio: HTMLAudioElement | null = null;

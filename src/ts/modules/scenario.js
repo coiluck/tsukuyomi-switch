@@ -18,7 +18,7 @@ export const openingScenario = [
     speaker: 'ルカ',
     action: async () => {
       changeCharacterImage('ruka', 'base_open', true);
-      await bgm.play('oyatunoatohanamukunaru');
+      bgm.play('oyatunoatohanamukunaru');
     }
   },
   { text: 'ここはオカルト部の部室。部員は俺たち二人だけだ。' },

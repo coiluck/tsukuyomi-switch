@@ -3,6 +3,8 @@ import { changeModal } from "./modules/changeModal.js";
 import { se } from "./modules/music.js";
 import { initGallary } from "./gallary";
 
+import { startEndroll } from "./modules/endroll";
+
 document.getElementById("top-button-start").addEventListener("click", () => {
   // indexとかを初期化する必要がある
   // これはopening.jsでやる

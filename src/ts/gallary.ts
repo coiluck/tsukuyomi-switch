@@ -1,15 +1,22 @@
 // gallary.js
 import { changeModal, closeModal } from './modules/changeModal.js';
 import { bgm, se } from './modules/music.js';
+import { startEndroll } from './modules/endroll';
 
 document.querySelector('.gallary-close-button-container')?.addEventListener('click', () => {
   if (document.getElementById('modal-gallary')?.style.zIndex === '100') {
     closeModal('gallary');
-    changeModal('ending', null, 500);
+    changeModal('endroll', null, 500);
     bgm.fadeOut();
+    setTimeout(() => {
+      startEndroll();
+    }, 500);
   } else {
     changeModal('top', null, 500);
     bgm.fadeOut();
+    setTimeout(() => {
+      startEndroll();
+    }, 500);
   }
   se.play("button_close");
 });

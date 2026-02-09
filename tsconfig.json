@@ -13,6 +13,10 @@
     "isolatedModules": true,
     "noEmit": true,
 
+    "noImplicitAny": false,    // 暗黙的なanyを許可
+    "allowJs": true,           // JSファイルの読み込みを許可
+    "checkJs": false,
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
