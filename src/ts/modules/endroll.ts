@@ -84,7 +84,7 @@ function initEndroll() {
   `;
   // 最後隠すためのアイテム
   endrollContainer.innerHTML += `
-    <div class="endroll-spacer"></div>
+    <div class="endroll-spacer-sub"></div>
   `;
   // 最後のテキスト
   endrollContainer.innerHTML += `

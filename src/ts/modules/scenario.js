@@ -567,6 +567,7 @@ export const openingChoices = {
         {
           text: '「...ただいま」',
           action: async () => {
+            deleteCharacterTatie();
             changeBackgroundImage('opening', 'entrance_evening.jpg');
             await new Promise(resolve => setTimeout(resolve, 1000));
             se.play('door');
@@ -1367,7 +1368,12 @@ export const openingChoices = {
           }
         },
         { text: '「ありがとう。いただきます' },
-        { text: '二人で食べ始めようとした時、俺のスマホが鳴った。' },
+        {
+          text: '二人で食べ始めようとした時、俺のスマホが鳴った。',
+          action: async () => {
+            se.play('phone_call');
+          }
+        },
         { text: '着信画面には「ひな」の文字。' },
         { text: '「...妹からだ」' },
         {

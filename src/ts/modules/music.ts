@@ -68,7 +68,6 @@ class BGMController {
           window.clearInterval(intervalId);
           // this.fadeInterval = null;
           this.fadePromise = null;
-          console.log(this.audio, 'fadeOut完了');
           resolve();
         }
       }, stepMs);

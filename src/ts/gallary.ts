@@ -14,9 +14,6 @@ document.querySelector('.gallary-close-button-container')?.addEventListener('cli
   } else {
     changeModal('top', null, 500);
     bgm.fadeOut();
-    setTimeout(() => {
-      startEndroll();
-    }, 500);
   }
   se.play("button_close");
 });
@@ -60,6 +57,7 @@ import { globalSettingState, saveSettingsData } from './modules/gameState';
 
 export function initGallary() {
   const gallaryContainer = document.querySelector('.gallary-container') as HTMLElement;
+  gallaryContainer.innerHTML = '';
 
   collectionData.forEach(item => {
     const gallaryItem = document.createElement('div');

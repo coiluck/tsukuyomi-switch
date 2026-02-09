@@ -53,6 +53,9 @@
 .endroll-spacer {
   height: 90vh;
 }
+.endroll-spacer-sub {
+  height: 80vh;
+}
 
 .endroll-logo-container {
   width: 70%;
@@ -114,7 +117,7 @@
     rgba(246, 238, 238, 0.72) 35%,
     rgba(246, 238, 238, 0.54) 55%,
     rgba(246, 238, 238, 0.36) 75%,
-    rgba(246, 238, 238, 0.18)90%,
+    rgba(246, 238, 238, 0.18) 90%,
     rgba(246, 238, 238, 0) 100%
   );
 }
