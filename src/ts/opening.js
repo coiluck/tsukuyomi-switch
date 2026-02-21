@@ -40,7 +40,7 @@ document.getElementById('modal-opening').addEventListener('click', () => {
   updateStory();
 });
 
-async function updateStory() {
+async function updateStory(isNeedWait = true) {
   if (isUpdating) return;
   isUpdating = true;
 
@@ -82,7 +82,7 @@ async function updateStory() {
     return;
   }
 
-  await displayStory(index, true);
+  await displayStory(index, true, isNeedWait);
 
   // 表示した状態を履歴に追加
   displayHistory.push({
@@ -135,7 +135,7 @@ function checkEnding() {
 
 import { deleteCharacterFace } from './modules/character';
 
-async function displayStory(index, executeAction = true) {
+async function displayStory(index, executeAction = true, isNeedWait = true) {
 
   const isBranch = branchStack.length > 0;
   const currentScenario = isBranch ? branchStack[branchStack.length - 1].scenario : Scenario;
@@ -166,7 +166,7 @@ async function displayStory(index, executeAction = true) {
   }
 
   // テキストを表示
-  await displayText(story.text);
+  await displayText(story.text, isNeedWait);
   globalGameState.storyData.currentText = story.text;
 
   // 選択肢を消去(戻るボタンで選択肢が残るのを防ぐ)
@@ -315,7 +315,7 @@ function updateGlobalGameState() {
 }
 
 // テキストを表示
-async function displayText(text) {
+async function displayText(text, isNeedWait = true) {
   let textSpeed = 3;
   const radios = document.querySelectorAll('input[name="text-speed"]');
   for (let i = 0; i < radios.length; i++) {
@@ -324,7 +324,7 @@ async function displayText(text) {
       break;
     }
   }
-  const delay = 42 - textSpeed * 5;
+  const delay = isNeedWait ? 42 - textSpeed * 5 : 0;
   document.getElementById('opening-text').innerHTML = '';
   const textArray = text.split('');
   for (const char of textArray) {
@@ -410,3 +410,46 @@ export async function restoreGameFromGlobalState() {
 
   console.log('Game state restored successfully.');
 }
+
+
+window.addEventListener('wheel', (event) => {
+  event.preventDefault();
+  if (
+    document.getElementById('modal-opening')?.style.display !== 'block' ||
+    Array.from(document.querySelectorAll('.modal'))
+  .some(modal => modal.style.zIndex === '100')
+  ) return; // 別のを表示中
+  if (isUpdating) return;
+
+  if (event.deltaY < 0) {
+    // 上スクロール → 戻る（戻るボタンと同じロジック）
+    if (isDisplayingSelection || displayHistory.length < 2) {
+      se.play("disable");
+      return;
+    }
+    isUpdating = true;
+    se.play("button3");
+
+    displayHistory.pop();
+    const prevState = displayHistory[displayHistory.length - 1];
+    branchStack = restoreBranchStack(prevState.branchStackData);
+    openingStoryIndex = prevState.openingStoryIndex;
+
+    const isBranch = branchStack.length > 0;
+    if (isBranch) {
+      branchStack[branchStack.length - 1].index++;
+    } else {
+      openingStoryIndex++;
+    }
+
+    updateGlobalGameState();
+    displayStory(prevState.index, false, false).then(() => {
+      isUpdating = false;
+    });
+
+  } else {
+    // 下スクロール → 進む（クリックと同じ）
+    if (isDisplayingSelection) return;
+    updateStory(false);
+  }
+}, { passive: false });
