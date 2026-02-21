@@ -15,7 +15,8 @@
       {
         "title": "ツクヨミスイッチ",
         "width": 800,
-        "height": 500
+        "height": 500,
+        "visible": false
       }
     ],
     "security": {
