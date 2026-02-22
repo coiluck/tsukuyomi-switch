@@ -97,13 +97,15 @@ export async function deleteCharacterFace() {
 }
 
 export async function deleteCharacterTatie() {
-  const currentCharacterImage = document.querySelector(`#opening-character-container img`) as HTMLImageElement;
-  if (currentCharacterImage) {
-    currentCharacterImage.classList.remove("active");
-    currentCharacterImage.classList.remove("fade-in");
-    currentCharacterImage.classList.add("fade-out");
-    setTimeout(() => {
-      currentCharacterImage.remove();
-    }, 500);
+  const currentCharacterImages = document.querySelectorAll(`#opening-character-container img`) as NodeListOf<HTMLImageElement>;
+  if (currentCharacterImages.length > 0) {
+    currentCharacterImages.forEach((img) => {
+      img.classList.remove("active");
+      img.classList.remove("fade-in");
+      img.classList.add("fade-out");
+      setTimeout(() => {
+        img.remove();
+      }, 500);
+    });
   }
 }

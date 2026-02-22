@@ -413,13 +413,13 @@ export async function restoreGameFromGlobalState() {
 
 
 window.addEventListener('wheel', (event) => {
-  event.preventDefault();
   if (
     document.getElementById('modal-opening')?.style.display !== 'block' ||
     Array.from(document.querySelectorAll('.modal'))
   .some(modal => modal.style.zIndex === '100')
   ) return; // 別のを表示中
   if (isUpdating) return;
+  event.preventDefault();
 
   if (event.deltaY < 0) {
     // 上スクロール → 戻る（戻るボタンと同じロジック）
