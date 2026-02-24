@@ -428,7 +428,6 @@ window.addEventListener('wheel', (event) => {
       return;
     }
     isUpdating = true;
-    se.play("button3");
 
     displayHistory.pop();
     const prevState = displayHistory[displayHistory.length - 1];
